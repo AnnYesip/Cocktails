@@ -19,11 +19,14 @@
 		8730D6BD26207A6000A026F8 /* AlcoholCocktailsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730D6BC26207A6000A026F8 /* AlcoholCocktailsData.swift */; };
 		8730D6C326207AAE00A026F8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730D6C226207AAE00A026F8 /* NetworkManager.swift */; };
 		879B9E032625A07E00CC875F /* NonAlcoholicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B9E022625A07E00CC875F /* NonAlcoholicCollectionViewCell.swift */; };
+		87B821A0265D421200A55829 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B8219F265D421200A55829 /* SearchTableViewController.swift */; };
+		87B821A2265D43D300A55829 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B821A1265D43D300A55829 /* SearchTableViewCell.swift */; };
+		87B821A426611CC100A55829 /* DownloadMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B821A326611CC100A55829 /* DownloadMethod.swift */; };
 		87BCE78726231C6F00E63365 /* CocktailsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 87BCE78526231C6F00E63365 /* CocktailsModel.xcdatamodeld */; };
 		87BCE78B26231E5E00E63365 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCE78A26231E5E00E63365 /* CoreDataManager.swift */; };
-		87D89BF02655614E00E6667B /* SecondTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D89BEF2655614E00E6667B /* SecondTableViewController.swift */; };
+		87D89BF02655614E00E6667B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D89BEF2655614E00E6667B /* TableViewController.swift */; };
 		87D89BF2265561AE00E6667B /* SecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D89BF1265561AE00E6667B /* SecondTableViewCell.swift */; };
-		87F8540A2645667B00A121B1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F854092645667B00A121B1 /* SecondViewController.swift */; };
+		87EA9EDD26627E0C00D7E090 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EA9EDC26627E0C00D7E090 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,11 +44,14 @@
 		8730D6BC26207A6000A026F8 /* AlcoholCocktailsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholCocktailsData.swift; sourceTree = "<group>"; };
 		8730D6C226207AAE00A026F8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		879B9E022625A07E00CC875F /* NonAlcoholicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonAlcoholicCollectionViewCell.swift; sourceTree = "<group>"; };
+		87B8219F265D421200A55829 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		87B821A1265D43D300A55829 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		87B821A326611CC100A55829 /* DownloadMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadMethod.swift; sourceTree = "<group>"; };
 		87BCE78626231C6F00E63365 /* CocktailsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CocktailsModel.xcdatamodel; sourceTree = "<group>"; };
 		87BCE78A26231E5E00E63365 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		87D89BEF2655614E00E6667B /* SecondTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTableViewController.swift; sourceTree = "<group>"; };
+		87D89BEF2655614E00E6667B /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		87D89BF1265561AE00E6667B /* SecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTableViewCell.swift; sourceTree = "<group>"; };
-		87F854092645667B00A121B1 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		87EA9EDC26627E0C00D7E090 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,8 +78,9 @@
 			isa = PBXGroup;
 			children = (
 				8730D69E26204F0800A026F8 /* ViewController.swift */,
-				87D89BEF2655614E00E6667B /* SecondTableViewController.swift */,
-				87F854092645667B00A121B1 /* SecondViewController.swift */,
+				87D89BEF2655614E00E6667B /* TableViewController.swift */,
+				87B8219F265D421200A55829 /* SearchTableViewController.swift */,
+				87EA9EDC26627E0C00D7E090 /* DetailViewController.swift */,
 				8730D6BA2620795600A026F8 /* Extensions */,
 			);
 			path = ViewControllers;
@@ -84,6 +91,7 @@
 			children = (
 				871675F32653F8280051D12E /* TableViewCell.swift */,
 				87D89BF1265561AE00E6667B /* SecondTableViewCell.swift */,
+				87B821A1265D43D300A55829 /* SearchTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -110,6 +118,7 @@
 				8730D69A26204F0800A026F8 /* AppDelegate.swift */,
 				8730D69C26204F0800A026F8 /* SceneDelegate.swift */,
 				8702F42226272EC10077AB41 /* ViewControllers */,
+				87B821A5266130EF00A55829 /* DownloadData */,
 				8730D6C026207A7500A026F8 /* NetworkManager */,
 				87BCE78926231D3400E63365 /* Core Data */,
 				8730D6A326204F0A00A026F8 /* Assets.xcassets */,
@@ -137,6 +146,14 @@
 				8730D6C226207AAE00A026F8 /* NetworkManager.swift */,
 			);
 			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		87B821A5266130EF00A55829 /* DownloadData */ = {
+			isa = PBXGroup;
+			children = (
+				87B821A326611CC100A55829 /* DownloadMethod.swift */,
+			);
+			path = DownloadData;
 			sourceTree = "<group>";
 		};
 		87BCE78926231D3400E63365 /* Core Data */ = {
@@ -222,14 +239,17 @@
 				8730D6B2262054F900A026F8 /* ViewController + CollectionView.swift in Sources */,
 				87D89BF2265561AE00E6667B /* SecondTableViewCell.swift in Sources */,
 				879B9E032625A07E00CC875F /* NonAlcoholicCollectionViewCell.swift in Sources */,
+				87B821A426611CC100A55829 /* DownloadMethod.swift in Sources */,
 				8730D6B82620578E00A026F8 /* SetupViewElements.swift in Sources */,
 				871675F42653F8280051D12E /* TableViewCell.swift in Sources */,
-				87D89BF02655614E00E6667B /* SecondTableViewController.swift in Sources */,
+				87B821A0265D421200A55829 /* SearchTableViewController.swift in Sources */,
+				87EA9EDD26627E0C00D7E090 /* DetailViewController.swift in Sources */,
+				87D89BF02655614E00E6667B /* TableViewController.swift in Sources */,
 				87BCE78726231C6F00E63365 /* CocktailsModel.xcdatamodeld in Sources */,
-				87F8540A2645667B00A121B1 /* SecondViewController.swift in Sources */,
 				8730D6C326207AAE00A026F8 /* NetworkManager.swift in Sources */,
 				8730D69B26204F0800A026F8 /* AppDelegate.swift in Sources */,
 				8730D6BD26207A6000A026F8 /* AlcoholCocktailsData.swift in Sources */,
+				87B821A2265D43D300A55829 /* SearchTableViewCell.swift in Sources */,
 				87BCE78B26231E5E00E63365 /* CoreDataManager.swift in Sources */,
 				8730D69D26204F0800A026F8 /* SceneDelegate.swift in Sources */,
 			);

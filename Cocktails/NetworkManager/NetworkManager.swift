@@ -13,6 +13,7 @@ class NetworkManager{
     enum RequestType{
         case alcoholic
         case nonAlcoholic
+        case random
     }
     
     func fetchData(for requestType: RequestType, completion: @escaping ([ Drink ]) -> Void){
@@ -22,6 +23,8 @@ class NetworkManager{
             urlString = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic"
         case .nonAlcoholic:
             urlString = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic"
+        case .random:
+          urlString = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
         }
             guard let url = URL(string: urlString) else { return }
             let session = URLSession.shared

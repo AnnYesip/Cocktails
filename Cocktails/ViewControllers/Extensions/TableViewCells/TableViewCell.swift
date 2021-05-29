@@ -17,6 +17,7 @@ class TableViewCell: UITableViewCell {
 
   let cocktailImage = UIImageView.createDefaultImageView()
   let cocktailsLabel = UILabel.createDefaultLabel()
+  let cocktailText = UITextField.createDefaultTextField()
 
     //MARK: UIMethods -
   func setupCoctailImage(){
@@ -40,14 +41,24 @@ class TableViewCell: UITableViewCell {
     cocktailsLabel.numberOfLines = 0
     cocktailsLabel.font = UIFont.boldSystemFont(ofSize: 20)
   }
+  
+  func setupcocktailText(){
+    NSLayoutConstraint.activate([
+      cocktailText.topAnchor.constraint(equalTo: cocktailsLabel.bottomAnchor, constant: 25),
+      cocktailText.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant:  110),
+      cocktailText.widthAnchor.constraint(equalToConstant: 200)
+    ])
+  }
     
     //MARK: Initializer -
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(cocktailImage)
         contentView.addSubview(cocktailsLabel)
+        contentView.addSubview(cocktailText)
         setupCoctailImage()
         setupCocktailLabel()
+        setupcocktailText()
     }
     
     required init?(coder: NSCoder) {
@@ -56,8 +67,6 @@ class TableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

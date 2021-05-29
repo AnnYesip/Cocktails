@@ -9,15 +9,15 @@ import Foundation
 
 // MARK: - Cocktails
 struct Cocktails: Codable {
-    let drinks: [Drink]
-    
+  let drinks: [Drink]
 }
 
 // MARK: - Drink
 struct Drink: Codable {
-    let strDrink: String
-    let strDrinkThumb: String
-    let idDrink: String
+  let strDrink: String
+  let strDrinkThumb: String
+  let idDrink: String
+  let strInstructions: String?
 }
 
 

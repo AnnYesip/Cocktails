@@ -1,5 +1,5 @@
 //
-//  SecondTableViewController.swift
+//  TableViewController.swift
 //  Cocktails
 //
 //  Created by Ann Yesip on 19.05.2021.
@@ -7,14 +7,16 @@
 
 import UIKit
 
-class TableViewController: UITableViewController, UINavigationControllerDelegate {
+class TableViewController: UITableViewController {
     
     let coreDataManager = CoreDataManager()
     let networkManager = NetworkManager()
     var tableId: Int = 0
-    
+  let downloadData = Download()
+  
     override func viewDidLoad() {
         super.viewDidLoad()
+      
         
     }
 
@@ -26,12 +28,9 @@ class TableViewController: UITableViewController, UINavigationControllerDelegate
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView.tag == 1{
-            print("numberOfRowsInSection tag 1")
             return coreDataManager.fetchCocktails().count
-
         } else if tableView.tag == 2 {
-            print("numberOfRowsInSection tag 2")
-            return coreDataManager.fetchCocktails().count
+            return coreDataManager.fetchNonAlcoholicCocktails().count
         }
         return Int()
     }
@@ -42,6 +41,7 @@ class TableViewController: UITableViewController, UINavigationControllerDelegate
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      
         if tableView.tag == 1{
             print("tag 1")
             tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.reuseIdentifier)
@@ -50,6 +50,7 @@ class TableViewController: UITableViewController, UINavigationControllerDelegate
             cell.cocktailImage.image = UIImage(data: cocktail.image!)
             cell.cocktailImage.clipsToBounds = true
             cell.cocktailsLabel.text = cocktail.name
+            cell.cocktailText.text = cocktail.strInstructions
             return cell
         } else if tableView.tag == 2 {
             print("tag 2")
@@ -59,6 +60,7 @@ class TableViewController: UITableViewController, UINavigationControllerDelegate
             cell.cocktailImage.image = UIImage(data: cocktail.image!)
             cell.cocktailImage.clipsToBounds = true
             cell.cocktailsLabel.text = cocktail.name
+//            cell.cocktailText.text = cocktail.strInstructions
             return cell
         }
         return UITableViewCell()

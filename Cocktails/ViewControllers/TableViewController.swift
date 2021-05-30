@@ -60,10 +60,21 @@ class TableViewController: UITableViewController {
             cell.cocktailImage.image = UIImage(data: cocktail.image!)
             cell.cocktailImage.clipsToBounds = true
             cell.cocktailsLabel.text = cocktail.name
-//            cell.cocktailText.text = cocktail.strInstructions
             return cell
         }
         return UITableViewCell()
         }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let secondVC = DetailViewController()
+    if tableView.tag == 1{
+      let cocktail = coreDataManager.fetchCocktails()[indexPath.row]
+      secondVC.id = cocktail.id ?? "1"
+    } else {
+      let cocktail = coreDataManager.fetchNonAlcoholicCocktails()[indexPath.row]
+      secondVC.id = cocktail.id ?? "1"
+    }
+    navigationController?.present(secondVC, animated: true)
+  }
   
 }

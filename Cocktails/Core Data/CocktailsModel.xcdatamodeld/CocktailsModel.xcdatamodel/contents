@@ -18,9 +18,16 @@
         <attribute name="name" attributeType="String"/>
         <attribute name="strInstructions" attributeType="String"/>
     </entity>
+    <entity name="SearchById" representedClassName="SearchById" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="String"/>
+        <attribute name="image" attributeType="Binary"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="strInstructions" attributeType="String"/>
+    </entity>
     <elements>
         <element name="AlcoholicCocktails" positionX="-63" positionY="-18" width="128" height="89"/>
         <element name="NonAlcoholicCocktails" positionX="-63" positionY="9" width="128" height="89"/>
         <element name="Recommended" positionX="-63" positionY="27" width="128" height="89"/>
+        <element name="SearchById" positionX="-45" positionY="54" width="128" height="89"/>
     </elements>
 </model>

@@ -7,45 +7,54 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UITableViewDelegate {
   var id = String()
+  let coreData = CoreDataManager()
+  let download  = Download()
   
-  let cocktailName = UILabel.createDefaultLabel()
-  let cocktailImage = UIImageView.createDefaultImageView()
+  var characters = ["Link", "Zelda", "Ganondorf", "Midna"]
   
+  //MARK: UIElements -
+  var cocktailName = UILabel.createDefaultLabel()
+  var cocktailImage = UIImageView.createDefaultImageView()
+  var cocktailInstruction = UITextView.createDefaultTextView()
+  var ingredientsLabel = UILabel.createDefaultLabel()
+  var tableView = UITableView()
+  
+  //MARK: viewDidLoad -
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
-    
     view.addSubview(cocktailName)
     view.addSubview(cocktailImage)
-    print(id)
+    view.addSubview(cocktailInstruction)
+    view.addSubview(ingredientsLabel)
+    view.addSubview(tableView)
+    
+    tableView.delegate = self
+    tableView.dataSource = self
     
     setupCocktailsName()
-    setupCcocktailImage()
-  }
-  
-  func setupCocktailsName(){
-    NSLayoutConstraint.activate([
-      cocktailName.topAnchor.constraint(equalTo: view.topAnchor, constant: 15),
-      cocktailName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-    ])
-    cocktailName.text = " Fine Cocktail"
-    cocktailName.font = .boldSystemFont(ofSize: 20)
-  }
-  
-  func setupCcocktailImage(){
-    NSLayoutConstraint.activate([
-      cocktailImage.topAnchor.constraint(equalTo: cocktailName.bottomAnchor, constant: 15),
-      cocktailImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      cocktailImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
-      cocktailImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9)
-    ])
+    setupCocktailImage()
+    setupCocktailInstruction()
+    setupIngredientsLabel()
+    setupTableView()
     
-    cocktailImage.layer.cornerRadius = 10
-    cocktailImage.backgroundColor = .black
+    updateInterface()
   }
-  
-  
+  //MARK:  func -
+  func updateInterface(){
+    download.downloadSearchByIdCocktails(id: id) {
+      let data = self.coreData.fetchSearchByIdCocktail()
+      data.forEach { data in
+        guard let imageData = data.image else { return }
+        self.cocktailImage.image = UIImage(data: imageData)
+        self.cocktailName.text = data.name
+        self.cocktailInstruction.text = data.strInstructions
+      }
+    }
+  }
   
 }
+
+

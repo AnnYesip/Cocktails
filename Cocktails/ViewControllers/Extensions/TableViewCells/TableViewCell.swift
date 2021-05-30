@@ -17,7 +17,7 @@ class TableViewCell: UITableViewCell {
 
   let cocktailImage = UIImageView.createDefaultImageView()
   let cocktailsLabel = UILabel.createDefaultLabel()
-  let cocktailText = UITextField.createDefaultTextField()
+  let cocktailText = UITextView.createDefaultTextView()
 
     //MARK: UIMethods -
   func setupCoctailImage(){

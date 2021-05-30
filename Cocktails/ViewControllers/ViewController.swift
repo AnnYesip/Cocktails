@@ -190,10 +190,11 @@ extension UIButton {
   }
 }
 
-extension UITextField {
-  static func createDefaultTextField() -> UITextField {
-    let textField = UITextField()
+extension UITextView {
+  static func createDefaultTextView() -> UITextView {
+    let textField = UITextView()
     textField.translatesAutoresizingMaskIntoConstraints = false
+    textField.isEditable = false
     return textField
   }
 }

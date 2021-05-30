@@ -62,10 +62,10 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
       let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: NonAlcoholicCollectionViewCell.reuseIdentifier, for: indexPath as IndexPath) as! NonAlcoholicCollectionViewCell
       cell2.layer.cornerRadius = 10
       
-      let cocktail = coreDataManager.fetchNonAlcoholicCocktails()[indexPath.section]
-      cell2.cocktailImage.image = UIImage(data: cocktail.image!)
+      let cocktail2 = coreDataManager.fetchNonAlcoholicCocktails()[indexPath.section]
+      cell2.cocktailImage.image = UIImage(data: cocktail2.image!)
       cell2.cocktailImage.clipsToBounds = true
-      cell2.cocktailsLabel.text = cocktail.name
+      cell2.cocktailsLabel.text = cocktail2.name
       return cell2
     }
     
@@ -73,9 +73,14 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let cocktail = coreDataManager.fetchCocktails()[indexPath.section]
     let secondVC = DetailViewController()
-    secondVC.id = cocktail.id ?? "1"
+    if collectionView.tag == 1{
+      let cocktail = coreDataManager.fetchCocktails()[indexPath.section]
+      secondVC.id = cocktail.id ?? "1"
+    } else {
+      let cocktail = coreDataManager.fetchNonAlcoholicCocktails()[indexPath.section]
+      secondVC.id = cocktail.id ?? "1"
+    }
     navigationController?.present(secondVC, animated: true)
     
   }

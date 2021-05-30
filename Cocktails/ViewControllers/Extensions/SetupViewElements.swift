@@ -64,8 +64,8 @@ extension ViewController{
       recommendedLabel.topAnchor.constraint(equalTo: recommendedView.topAnchor),
       recommendedLabel.centerXAnchor.constraint(equalTo: recommendedView.centerXAnchor),
     ])
-    recommendedLabel.text = " we recommend "
-//    recommendedLabel.textColor = .systemGray
+    recommendedLabel.text = " we recommend to try "
+    recommendedLabel.textColor = .white
     recommendedLabel.font = .boldSystemFont(ofSize: 15)
   }
   

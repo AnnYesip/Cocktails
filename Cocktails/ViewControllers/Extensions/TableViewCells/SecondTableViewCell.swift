@@ -18,7 +18,6 @@ class SecondTableViewCell: UITableViewCell {
   let cocktailImage = UIImageView.createDefaultImageView()
   let cocktailsLabel = UILabel.createDefaultLabel()
   
-  
   //MARK: UIMethods -
   func setupCoctailImage(){
     NSLayoutConstraint.activate([

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		871675F42653F8280051D12E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871675F32653F8280051D12E /* TableViewCell.swift */; };
+		871D7B862663D8D3004A066C /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D7B852663D8D3004A066C /* DetailTableViewCell.swift */; };
+		871D7B882663E102004A066C /* DetailViewController + TableViewDataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D7B872663E102004A066C /* DetailViewController + TableViewDataSourse.swift */; };
+		871D7B8A2663E14A004A066C /* SetupDetailVCUIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D7B892663E14A004A066C /* SetupDetailVCUIElements.swift */; };
 		8730D69B26204F0800A026F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730D69A26204F0800A026F8 /* AppDelegate.swift */; };
 		8730D69D26204F0800A026F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730D69C26204F0800A026F8 /* SceneDelegate.swift */; };
 		8730D69F26204F0800A026F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730D69E26204F0800A026F8 /* ViewController.swift */; };
@@ -31,6 +34,9 @@
 
 /* Begin PBXFileReference section */
 		871675F32653F8280051D12E /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		871D7B852663D8D3004A066C /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		871D7B872663E102004A066C /* DetailViewController + TableViewDataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewController + TableViewDataSourse.swift"; sourceTree = "<group>"; };
+		871D7B892663E14A004A066C /* SetupDetailVCUIElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupDetailVCUIElements.swift; sourceTree = "<group>"; };
 		8730D69726204F0800A026F8 /* Cocktails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cocktails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8730D69A26204F0800A026F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8730D69C26204F0800A026F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				871675F32653F8280051D12E /* TableViewCell.swift */,
+				871D7B852663D8D3004A066C /* DetailTableViewCell.swift */,
 				87D89BF1265561AE00E6667B /* SecondTableViewCell.swift */,
 				87B821A1265D43D300A55829 /* SearchTableViewCell.swift */,
 			);
@@ -133,6 +140,8 @@
 			children = (
 				8730D6B72620578E00A026F8 /* SetupViewElements.swift */,
 				8730D6B1262054F900A026F8 /* ViewController + CollectionView.swift */,
+				871D7B892663E14A004A066C /* SetupDetailVCUIElements.swift */,
+				871D7B872663E102004A066C /* DetailViewController + TableViewDataSourse.swift */,
 				871675F52653F8320051D12E /* TableViewCells */,
 				8702F4152626FB0B0077AB41 /* CollectionViewCells */,
 			);
@@ -239,6 +248,7 @@
 				8730D6B2262054F900A026F8 /* ViewController + CollectionView.swift in Sources */,
 				87D89BF2265561AE00E6667B /* SecondTableViewCell.swift in Sources */,
 				879B9E032625A07E00CC875F /* NonAlcoholicCollectionViewCell.swift in Sources */,
+				871D7B8A2663E14A004A066C /* SetupDetailVCUIElements.swift in Sources */,
 				87B821A426611CC100A55829 /* DownloadMethod.swift in Sources */,
 				8730D6B82620578E00A026F8 /* SetupViewElements.swift in Sources */,
 				871675F42653F8280051D12E /* TableViewCell.swift in Sources */,
@@ -252,6 +262,8 @@
 				87B821A2265D43D300A55829 /* SearchTableViewCell.swift in Sources */,
 				87BCE78B26231E5E00E63365 /* CoreDataManager.swift in Sources */,
 				8730D69D26204F0800A026F8 /* SceneDelegate.swift in Sources */,
+				871D7B882663E102004A066C /* DetailViewController + TableViewDataSourse.swift in Sources */,
+				871D7B862663D8D3004A066C /* DetailTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

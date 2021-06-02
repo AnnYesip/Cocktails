@@ -67,13 +67,48 @@ class CoreDataManager {
     
   }
   
-  func saveSearchByIdCocktail(_ name: String, image: Data, id: String, strInstructions: String) {
+  func saveSearchByIdCocktail(_ name: String,
+                              image: Data,
+                              id: String,
+                              strAlcoholic: String,
+                              strInstructions: String,
+                              strIngredient1: String,
+                              strIngredient2: String,
+                              strIngredient3: String,
+                              strIngredient4: String,
+                              strIngredient5: String,
+                              strIngredient6: String,
+                              strIngredient7: String,
+                              strIngredient8: String,
+                              strIngredient9: String,
+                              strIngredient10: String,
+                              strIngredient11: String,
+                              strIngredient12: String,
+                              strIngredient13: String,
+                              strIngredient14: String,
+                              strIngredient15: String) {
     guard let searchByIdDescription = NSEntityDescription.entity(forEntityName: "SearchById", in: mainMOC) else { return }
     let searchResults = NSManagedObject(entity: searchByIdDescription, insertInto: mainMOC) as! SearchById
     searchResults.name = name
     searchResults.id = id
     searchResults.image = image
+    searchResults.strAlcoholic = strAlcoholic
     searchResults.strInstructions = strInstructions
+    searchResults.strIngredient1 = strIngredient1
+    searchResults.strIngredient2 = strIngredient2
+    searchResults.strIngredient3 = strIngredient3
+    searchResults.strIngredient4 = strIngredient4
+    searchResults.strIngredient5 = strIngredient5
+    searchResults.strIngredient6 = strIngredient6
+    searchResults.strIngredient7 = strIngredient7
+    searchResults.strIngredient8 = strIngredient8
+    searchResults.strIngredient9 = strIngredient9
+    searchResults.strIngredient10 = strIngredient10
+    searchResults.strIngredient11 = strIngredient11
+    searchResults.strIngredient12 = strIngredient12
+    searchResults.strIngredient13 = strIngredient13
+    searchResults.strIngredient14 = strIngredient14
+    searchResults.strIngredient15 = strIngredient15
     
     do {
       try mainMOC.save()

@@ -21,36 +21,19 @@ class ViewController: UIViewController, UICollectionViewDelegate {
   let recommendedView = UIView.createDefaultView()
   let recommendedLabel = UILabel.createDefaultLabel()
   let recommendedImage = UIImageView.createDefaultImageView()
-  let blurView = UIVisualEffectView.createDefaultVisualEffectView()
-  let recommendedBlurView = UIVisualEffectView.createDefaultVisualEffectView()
+  let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+  var recommendedBlurView = UIVisualEffectView.createDefaultVisualEffectView()
   let recommendedCocktailName = UILabel.createDefaultLabel()
-  let alcoholicLabel = UILabel.createDefaultLabel()
+  
+
   let alcoholicButton = UIButton.createDefaultButton()
   
-  let firstCollectionView: UICollectionView = {
-    let layout = UICollectionViewFlowLayout()
-    layout.scrollDirection = .horizontal
-    let collection = UICollectionView(frame: .init(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
-    
-    collection.translatesAutoresizingMaskIntoConstraints = false
-    collection.register(FirstCollectionViewCell.self, forCellWithReuseIdentifier: FirstCollectionViewCell.reuseIdentifier)
-    collection.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-    return collection
-  }()
+
   
-  let nonAlcoholicLabel = UILabel.createDefaultLabel()
+
   let nonAlcoholicButton = UIButton.createDefaultButton()
   
-  let nonAlcoholicCollectionView: UICollectionView = {
-    let layout = UICollectionViewFlowLayout()
-    layout.scrollDirection = .horizontal
-    let collection = UICollectionView(frame: .init(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
-    
-    collection.translatesAutoresizingMaskIntoConstraints = false
-    collection.register(NonAlcoholicCollectionViewCell.self, forCellWithReuseIdentifier: NonAlcoholicCollectionViewCell.reuseIdentifier)
-    collection.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-    return collection
-  }()
+
   
   
   
@@ -60,12 +43,6 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     super.viewDidLoad()
     view.backgroundColor = .systemGray6
     view.addSubview(scrollView)
-    firstCollectionView.delegate = self
-    firstCollectionView.dataSource = self
-    nonAlcoholicCollectionView.delegate = self
-    nonAlcoholicCollectionView.dataSource = self
-    firstCollectionView.tag = 1
-    nonAlcoholicCollectionView.tag = 2
     
     setupNavigationController()
     setupScrollView()
@@ -75,13 +52,9 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     setupBlur()
     setupRecommendedBlur()
     setupRecommendedCocktailName()
-    setupAlcoholicLabel()
     setupAlcoholicButton()
-    setupCollectionView()
-    setupNonAlcoholicLabel()
     setupNonAlcoholicButton()
-    setupNonAlcoholicCollectionView()
-    
+
     updateCollectionView()
     
   }
@@ -90,13 +63,11 @@ class ViewController: UIViewController, UICollectionViewDelegate {
   func updateCollectionView(){
     downloadData.downloadAlcoholicDataCocktails() {
       DispatchQueue.main.asyncAfter(deadline: .now()) {
-        self.firstCollectionView.reloadData()
       }
     }
     
     downloadData.downloadNonAlcoholicDataCocktails(){
       DispatchQueue.main.asyncAfter(deadline: .now()) {
-        self.nonAlcoholicCollectionView.reloadData()
       }
     }
     
@@ -201,7 +172,7 @@ extension UITextView {
 
 extension UIVisualEffectView {
   static func createDefaultVisualEffectView() -> UIVisualEffectView {
-    let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+    let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     blurView.translatesAutoresizingMaskIntoConstraints = false
     return blurView
   }

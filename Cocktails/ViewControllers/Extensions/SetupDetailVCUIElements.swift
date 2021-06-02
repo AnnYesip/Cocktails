@@ -29,11 +29,20 @@ extension DetailViewController{
     cocktailImage.layer.cornerRadius = 10
   }
   
+  func setupCategoryLabel(){
+    NSLayoutConstraint.activate([
+      categoryLabel.topAnchor.constraint(equalTo: cocktailImage.bottomAnchor, constant: 5),
+      categoryLabel.rightAnchor.constraint(equalTo: cocktailImage.rightAnchor),
+      categoryLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9)
+    ])
+    categoryLabel.textColor = .systemGray
+  }
+  
   
   func setupCocktailInstruction(){
     NSLayoutConstraint.activate([
-      cocktailInstruction.topAnchor.constraint(equalTo: cocktailImage.bottomAnchor, constant: 15),
-      cocktailInstruction.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      cocktailInstruction.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 5),
+      cocktailInstruction.rightAnchor.constraint(equalTo: categoryLabel.rightAnchor),
       cocktailInstruction.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
     ])
     cocktailInstruction.sizeToFit()

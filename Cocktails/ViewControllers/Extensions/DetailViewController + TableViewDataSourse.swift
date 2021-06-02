@@ -10,12 +10,12 @@ import UIKit
 extension DetailViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return characters.count
+    return ingredients.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "IdentifierDetail", for: indexPath)
-    cell.textLabel?.text = characters[indexPath.row]
+    cell.textLabel?.text = ingredients[indexPath.row]
     return cell
   }
   

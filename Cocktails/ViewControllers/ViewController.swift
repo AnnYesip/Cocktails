@@ -28,9 +28,6 @@ class ViewController: UIViewController, UICollectionViewDelegate {
 
   let alcoholicButton = UIButton.createDefaultButton()
   
-
-  
-
   let nonAlcoholicButton = UIButton.createDefaultButton()
   
 
@@ -93,6 +90,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
   }
   
   @objc func handleLogOutButton() {
+    animateButton(sender: alcoholicButton)
     tableVC.modalPresentationStyle = .fullScreen
     tableVC.tableView.tag = 1
     tableVC.tableView.reloadData()
@@ -101,6 +99,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
   }
   
   @objc func handleLogOutButton2() {
+    animateButton(sender: nonAlcoholicButton)
     tableVC.modalPresentationStyle = .fullScreen
     tableVC.tableView.tag = 2
     tableVC.tableView.reloadData()
@@ -155,7 +154,7 @@ extension UIImageView {
 
 extension UIButton {
   static func createDefaultButton() -> UIButton {
-    let button = UIButton()
+    let button = UIButton(type: UIButton.ButtonType.system)
     button.translatesAutoresizingMaskIntoConstraints = false
     return button
   }

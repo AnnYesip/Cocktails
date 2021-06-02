@@ -126,6 +126,7 @@ extension ViewController{
 
   
   func setupAlcoholicButton(){
+    alcoholicButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       alcoholicButton.topAnchor.constraint(equalTo: recommendedView.bottomAnchor, constant: 40),
       alcoholicButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
@@ -133,11 +134,18 @@ extension ViewController{
       alcoholicButton.heightAnchor.constraint(equalToConstant: 100),
       alcoholicButton.widthAnchor.constraint(equalTo: scrollView.widthAnchor , multiplier: 0.9)
     ])
-    alcoholicButton.backgroundColor = .black
+    alcoholicButton.backgroundColor = .orange
     alcoholicButton.layer.cornerRadius = 10
     alcoholicButton.setTitle("Alcoholic cocktails", for: UIControl.State.normal)
+    alcoholicButton.setTitleColor(.white, for: .normal)
+    alcoholicButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
 
     alcoholicButton.addTarget(self, action: #selector(handleLogOutButton), for: .touchUpInside)
+
+    alcoholicButton.layer.shadowOpacity = 0.3
+    alcoholicButton.layer.shadowRadius = 9.0
+    alcoholicButton.layer.shadowColor = UIColor.systemOrange.cgColor
+    
   }
   
   
@@ -149,11 +157,34 @@ extension ViewController{
       nonAlcoholicButton.heightAnchor.constraint(equalToConstant: 100),
       nonAlcoholicButton.widthAnchor.constraint(equalTo: scrollView.widthAnchor , multiplier: 0.9)
     ])
-    nonAlcoholicButton.backgroundColor = .black
+    nonAlcoholicButton.showsTouchWhenHighlighted = true
+    nonAlcoholicButton.backgroundColor = .orange
     nonAlcoholicButton.setTitle(" Non Alcoholic cocktails", for: UIControl.State.normal)
+    nonAlcoholicButton.setTitleColor(.white, for: .normal)
+    nonAlcoholicButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
     nonAlcoholicButton.layer.cornerRadius = 10
     nonAlcoholicButton.addTarget(self, action: #selector(handleLogOutButton2), for: .touchUpInside)
+    
+    nonAlcoholicButton.layer.shadowOpacity = 0.3
+    nonAlcoholicButton.layer.shadowRadius = 9.0
+    nonAlcoholicButton.layer.shadowColor = UIColor.black.cgColor
   }
   
+  func animateButton(sender: UIButton) {
 
+      sender.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+
+      UIView.animate(withDuration: 2.0,
+                                 delay: 0,
+                                 usingSpringWithDamping: CGFloat(0.20),
+                                 initialSpringVelocity: CGFloat(3.0),
+                                 options: UIView.AnimationOptions.allowUserInteraction,
+                                 animations: {
+                                  sender.transform = CGAffineTransform.identity
+          },
+                                 completion: { Void in()  }
+      )
+  }
+  
+  
 }

@@ -16,12 +16,9 @@
 		8730D69F26204F0800A026F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730D69E26204F0800A026F8 /* ViewController.swift */; };
 		8730D6A426204F0A00A026F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8730D6A326204F0A00A026F8 /* Assets.xcassets */; };
 		8730D6A726204F0A00A026F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8730D6A526204F0A00A026F8 /* LaunchScreen.storyboard */; };
-		8730D6B2262054F900A026F8 /* ViewController + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730D6B1262054F900A026F8 /* ViewController + CollectionView.swift */; };
-		8730D6B52620557500A026F8 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730D6B42620557500A026F8 /* CollectionViewCell.swift */; };
 		8730D6B82620578E00A026F8 /* SetupViewElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730D6B72620578E00A026F8 /* SetupViewElements.swift */; };
 		8730D6BD26207A6000A026F8 /* AlcoholCocktailsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730D6BC26207A6000A026F8 /* AlcoholCocktailsData.swift */; };
 		8730D6C326207AAE00A026F8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730D6C226207AAE00A026F8 /* NetworkManager.swift */; };
-		879B9E032625A07E00CC875F /* NonAlcoholicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B9E022625A07E00CC875F /* NonAlcoholicCollectionViewCell.swift */; };
 		87B821A0265D421200A55829 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B8219F265D421200A55829 /* SearchTableViewController.swift */; };
 		87B821A2265D43D300A55829 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B821A1265D43D300A55829 /* SearchTableViewCell.swift */; };
 		87B821A426611CC100A55829 /* DownloadMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B821A326611CC100A55829 /* DownloadMethod.swift */; };
@@ -44,12 +41,9 @@
 		8730D6A326204F0A00A026F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8730D6A626204F0A00A026F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8730D6A826204F0A00A026F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8730D6B1262054F900A026F8 /* ViewController + CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + CollectionView.swift"; sourceTree = "<group>"; };
-		8730D6B42620557500A026F8 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		8730D6B72620578E00A026F8 /* SetupViewElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewElements.swift; sourceTree = "<group>"; };
 		8730D6BC26207A6000A026F8 /* AlcoholCocktailsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholCocktailsData.swift; sourceTree = "<group>"; };
 		8730D6C226207AAE00A026F8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		879B9E022625A07E00CC875F /* NonAlcoholicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonAlcoholicCollectionViewCell.swift; sourceTree = "<group>"; };
 		87B8219F265D421200A55829 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		87B821A1265D43D300A55829 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		87B821A326611CC100A55829 /* DownloadMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadMethod.swift; sourceTree = "<group>"; };
@@ -71,15 +65,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8702F4152626FB0B0077AB41 /* CollectionViewCells */ = {
-			isa = PBXGroup;
-			children = (
-				8730D6B42620557500A026F8 /* CollectionViewCell.swift */,
-				879B9E022625A07E00CC875F /* NonAlcoholicCollectionViewCell.swift */,
-			);
-			path = CollectionViewCells;
-			sourceTree = "<group>";
-		};
 		8702F42226272EC10077AB41 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,11 +124,9 @@
 			isa = PBXGroup;
 			children = (
 				8730D6B72620578E00A026F8 /* SetupViewElements.swift */,
-				8730D6B1262054F900A026F8 /* ViewController + CollectionView.swift */,
 				871D7B892663E14A004A066C /* SetupDetailVCUIElements.swift */,
 				871D7B872663E102004A066C /* DetailViewController + TableViewDataSourse.swift */,
 				871675F52653F8320051D12E /* TableViewCells */,
-				8702F4152626FB0B0077AB41 /* CollectionViewCells */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -243,11 +226,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8730D6B52620557500A026F8 /* CollectionViewCell.swift in Sources */,
 				8730D69F26204F0800A026F8 /* ViewController.swift in Sources */,
-				8730D6B2262054F900A026F8 /* ViewController + CollectionView.swift in Sources */,
 				87D89BF2265561AE00E6667B /* SecondTableViewCell.swift in Sources */,
-				879B9E032625A07E00CC875F /* NonAlcoholicCollectionViewCell.swift in Sources */,
 				871D7B8A2663E14A004A066C /* SetupDetailVCUIElements.swift in Sources */,
 				87B821A426611CC100A55829 /* DownloadMethod.swift in Sources */,
 				8730D6B82620578E00A026F8 /* SetupViewElements.swift in Sources */,

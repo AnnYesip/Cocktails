@@ -6,6 +6,11 @@
         <attribute name="name" attributeType="String"/>
         <attribute name="strInstructions" attributeType="String" defaultValueString="null"/>
     </entity>
+    <entity name="EntityForSearch" representedClassName="EntityForSearch" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="String"/>
+        <attribute name="image" attributeType="Binary"/>
+        <attribute name="name" attributeType="String"/>
+    </entity>
     <entity name="NonAlcoholicCocktails" representedClassName="NonAlcoholicCocktails" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="String"/>
         <attribute name="image" attributeType="Binary"/>
@@ -39,11 +44,27 @@
         <attribute name="strIngredient14" attributeType="String" defaultValueString=""/>
         <attribute name="strIngredient15" attributeType="String" defaultValueString=""/>
         <attribute name="strInstructions" attributeType="String"/>
+        <attribute name="strMeasure1" attributeType="String" defaultValueString=""/>
+        <attribute name="strMeasure2" attributeType="String" defaultValueString=""/>
+        <attribute name="strMeasure3" attributeType="String" defaultValueString=""/>
+        <attribute name="strMeasure4" attributeType="String" defaultValueString=""/>
+        <attribute name="strMeasure5" attributeType="String" defaultValueString=""/>
+        <attribute name="strMeasure6" attributeType="String" defaultValueString=""/>
+        <attribute name="strMeasure7" attributeType="String" defaultValueString=""/>
+        <attribute name="strMeasure8" attributeType="String" defaultValueString=""/>
+        <attribute name="strMeasure9" attributeType="String" defaultValueString=""/>
+        <attribute name="strMeasure10" attributeType="String" defaultValueString=""/>
+        <attribute name="strMeasure11" attributeType="String" defaultValueString=""/>
+        <attribute name="strMeasure12" attributeType="String" defaultValueString=""/>
+        <attribute name="strMeasure13" attributeType="String" defaultValueString=""/>
+        <attribute name="strMeasure14" attributeType="String" defaultValueString=""/>
+        <attribute name="strMeasure15" attributeType="String" defaultValueString=""/>
     </entity>
     <elements>
         <element name="AlcoholicCocktails" positionX="-63" positionY="-18" width="128" height="89"/>
         <element name="NonAlcoholicCocktails" positionX="-63" positionY="9" width="128" height="89"/>
         <element name="Recommended" positionX="-63" positionY="27" width="128" height="89"/>
-        <element name="SearchById" positionX="-45" positionY="54" width="128" height="329"/>
+        <element name="SearchById" positionX="-45" positionY="54" width="128" height="554"/>
+        <element name="EntityForSearch" positionX="-54" positionY="144" width="128" height="74"/>
     </elements>
 </model>

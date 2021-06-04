@@ -14,32 +14,25 @@ class ViewController: UIViewController, UICollectionViewDelegate {
   var tableId: Int? = nil
   let downloadData = Download()
   
-  
-  
   //MARK: UIElements -
   let scrollView = UIScrollView.createDefaultScrollView()
+  let buttonView = UIView.createDefaultView()
   let recommendedView = UIView.createDefaultView()
   let recommendedLabel = UILabel.createDefaultLabel()
   let recommendedImage = UIImageView.createDefaultImageView()
   let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-  var recommendedBlurView = UIVisualEffectView.createDefaultVisualEffectView()
   let recommendedCocktailName = UILabel.createDefaultLabel()
-  
-
   let alcoholicButton = UIButton.createDefaultButton()
-  
   let nonAlcoholicButton = UIButton.createDefaultButton()
-  
-
-  
-  
-  
   
   //MARK: viewDidLoad -
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .systemGray6
+    view.backgroundColor = .white
     view.addSubview(scrollView)
+    
+    tabBarController?.tabBar.layer.masksToBounds = true
+    tabBarController?.tabBar.layer.cornerRadius = 20
     
     setupNavigationController()
     setupScrollView()
@@ -47,7 +40,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     setupRecommendedLabel()
     setupRecommendedImage()
     setupBlur()
-    setupRecommendedBlur()
+    setupButtonView()
     setupRecommendedCocktailName()
     setupAlcoholicButton()
     setupNonAlcoholicButton()
@@ -56,8 +49,12 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     
   }
   
+
+  
+  
   //MARK: downloadData -
-  func updateCollectionView(){
+  func updateCollectionView() {
+    coreDataManager.deleteRecommendedCocktails()
     downloadData.downloadAlcoholicDataCocktails() {
       DispatchQueue.main.asyncAfter(deadline: .now()) {
       }
@@ -75,10 +72,6 @@ class ViewController: UIViewController, UICollectionViewDelegate {
       }
     }
   }
-  
-  
-  
-  
   
   
   //MARK: objc func -
@@ -110,11 +103,6 @@ class ViewController: UIViewController, UICollectionViewDelegate {
   deinit {
     print("deallocating \(self)")
   }
-  
-
-  
-  
-  
 }
 
 //MARK: extension -
@@ -176,4 +164,6 @@ extension UIVisualEffectView {
     return blurView
   }
 }
+
+
 

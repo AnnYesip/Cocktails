@@ -13,37 +13,49 @@ class DetailViewController: UIViewController, UITableViewDelegate {
   let download  = Download()
   
   var ingredients: [String] = []
+  var measure: [String] = []
+  
+  
+  
+  let headerTitles = ["Ingredients", "Measure"]
+  
+  
+  
   
   //MARK: UIElements -
+  let scroll = UIScrollView.createDefaultScrollView()
+  let contentView = UIView.createDefaultView()
   var cocktailName = UILabel.createDefaultLabel()
   var cocktailImage = UIImageView.createDefaultImageView()
   var categoryLabel = UILabel.createDefaultLabel()
   var cocktailInstruction = UITextView.createDefaultTextView()
-  var ingredientsLabel = UILabel.createDefaultLabel()
-  var tableView = UITableView()
+  var firstTableView = UITableView()
+  
   
   //MARK: viewDidLoad -
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.addSubview(scroll)
     view.backgroundColor = .white
-    view.addSubview(cocktailName)
-    view.addSubview(cocktailImage)
-    view.addSubview(categoryLabel)
-    view.addSubview(cocktailInstruction)
-    view.addSubview(ingredientsLabel)
-    view.addSubview(tableView)
     
-    tableView.delegate = self
-    tableView.dataSource = self
+    firstTableView.delegate = self
+    firstTableView.dataSource = self
+    firstTableView.tag = 1
     
+    
+    setupScrollView()
+    setupContentView()
     setupCocktailsName()
     setupCocktailImage()
     setupCategoryLabel()
     setupCocktailInstruction()
-    setupIngredientsLabel()
-    setupTableView()
+    setupFirstTableView()
+    
     
     updateInterface()
+    
+    
+    
   }
   //MARK:  func -
   func updateInterface(){
@@ -56,40 +68,65 @@ class DetailViewController: UIViewController, UITableViewDelegate {
         self.categoryLabel.text = data.strAlcoholic
         self.cocktailInstruction.text = data.strInstructions
         
-        self.appendElements(optionalIngredient: data.strIngredient1)
-        self.appendElements(optionalIngredient: data.strIngredient2)
-        self.appendElements(optionalIngredient: data.strIngredient3)
-        self.appendElements(optionalIngredient: data.strIngredient4)
-        self.appendElements(optionalIngredient: data.strIngredient5)
-        self.appendElements(optionalIngredient: data.strIngredient6)
-        self.appendElements(optionalIngredient: data.strIngredient7)
-        self.appendElements(optionalIngredient: data.strIngredient8)
-        self.appendElements(optionalIngredient: data.strIngredient9)
-        self.appendElements(optionalIngredient: data.strIngredient10)
-        self.appendElements(optionalIngredient: data.strIngredient11)
-        self.appendElements(optionalIngredient: data.strIngredient12)
-        self.appendElements(optionalIngredient: data.strIngredient13)
-        self.appendElements(optionalIngredient: data.strIngredient14)
-        self.appendElements(optionalIngredient: data.strIngredient15)
-
-        self.tableView.reloadData()
+        self.appendElementsForIngredien(optionalIngredient: data.strIngredient1)
+        self.appendElementsForIngredien(optionalIngredient: data.strIngredient2)
+        self.appendElementsForIngredien(optionalIngredient: data.strIngredient3)
+        self.appendElementsForIngredien(optionalIngredient: data.strIngredient4)
+        self.appendElementsForIngredien(optionalIngredient: data.strIngredient5)
+        self.appendElementsForIngredien(optionalIngredient: data.strIngredient6)
+        self.appendElementsForIngredien(optionalIngredient: data.strIngredient7)
+        self.appendElementsForIngredien(optionalIngredient: data.strIngredient8)
+        self.appendElementsForIngredien(optionalIngredient: data.strIngredient9)
+        self.appendElementsForIngredien(optionalIngredient: data.strIngredient10)
+        self.appendElementsForIngredien(optionalIngredient: data.strIngredient11)
+        self.appendElementsForIngredien(optionalIngredient: data.strIngredient12)
+        self.appendElementsForIngredien(optionalIngredient: data.strIngredient13)
+        self.appendElementsForIngredien(optionalIngredient: data.strIngredient14)
+        self.appendElementsForIngredien(optionalIngredient: data.strIngredient15)
+        
+        let queue = DispatchQueue(label: "download_queue", qos: .utility)
+        queue.async {
+          
+          self.appendElementsForMeasure(optionalMeasure: data.strMeasure1)
+          self.appendElementsForMeasure(optionalMeasure: data.strMeasure2)
+          self.appendElementsForMeasure(optionalMeasure: data.strMeasure3)
+          self.appendElementsForMeasure(optionalMeasure: data.strMeasure4)
+          self.appendElementsForMeasure(optionalMeasure: data.strMeasure5)
+          self.appendElementsForMeasure(optionalMeasure: data.strMeasure6)
+          self.appendElementsForMeasure(optionalMeasure: data.strMeasure7)
+          self.appendElementsForMeasure(optionalMeasure: data.strMeasure8)
+          self.appendElementsForMeasure(optionalMeasure: data.strMeasure9)
+          self.appendElementsForMeasure(optionalMeasure: data.strMeasure10)
+          self.appendElementsForMeasure(optionalMeasure: data.strMeasure11)
+          self.appendElementsForMeasure(optionalMeasure: data.strMeasure12)
+          self.appendElementsForMeasure(optionalMeasure: data.strMeasure13)
+          self.appendElementsForMeasure(optionalMeasure: data.strMeasure14)
+          self.appendElementsForMeasure(optionalMeasure: data.strMeasure15)
+          DispatchQueue.main.async {
+            self.firstTableView.reloadData()
+          }
+        }
+        self.firstTableView.reloadData()
       }
     }
   }
   
-  func appendElements(optionalIngredient: String?){
-    if optionalIngredient != nil {
-      guard let data = optionalIngredient else {return}
-      if data == "ингредиент отсуцтвует" {
-       print(data)
-      } else if data == " " {
-        print("значение отсуцтвует")
-      } else {
-        self.ingredients.append(data)
-      }
-
+  func appendElementsForIngredien(optionalIngredient: String?){
+    guard let data = optionalIngredient else {return}
+    if data == "ингредиент отсутствует" {
+    } else if data == "" {
+    } else {
+      self.ingredients.append(data)
     }
-
+  }
+  
+  func appendElementsForMeasure(optionalMeasure: String?){
+    guard let data = optionalMeasure else {return}
+    if data == "мера отсутствует" {
+    } else if data == "" {
+    } else {
+      self.measure.append(data)
+    }
   }
   
 }

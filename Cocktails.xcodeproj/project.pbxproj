@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		871675F42653F8280051D12E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871675F32653F8280051D12E /* TableViewCell.swift */; };
+		871675F42653F8280051D12E /* AllCocktailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871675F32653F8280051D12E /* AllCocktailTableViewCell.swift */; };
 		871D7B862663D8D3004A066C /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D7B852663D8D3004A066C /* DetailTableViewCell.swift */; };
 		871D7B882663E102004A066C /* DetailViewController + TableViewDataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D7B872663E102004A066C /* DetailViewController + TableViewDataSourse.swift */; };
 		871D7B8A2663E14A004A066C /* SetupDetailVCUIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D7B892663E14A004A066C /* SetupDetailVCUIElements.swift */; };
@@ -27,10 +27,11 @@
 		87D89BF02655614E00E6667B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D89BEF2655614E00E6667B /* TableViewController.swift */; };
 		87D89BF2265561AE00E6667B /* SecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D89BF1265561AE00E6667B /* SecondTableViewCell.swift */; };
 		87EA9EDD26627E0C00D7E090 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EA9EDC26627E0C00D7E090 /* DetailViewController.swift */; };
+		87FD7934266966DA00AC26EF /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FD7933266966DA00AC26EF /* FavouriteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		871675F32653F8280051D12E /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		871675F32653F8280051D12E /* AllCocktailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCocktailTableViewCell.swift; sourceTree = "<group>"; };
 		871D7B852663D8D3004A066C /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		871D7B872663E102004A066C /* DetailViewController + TableViewDataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewController + TableViewDataSourse.swift"; sourceTree = "<group>"; };
 		871D7B892663E14A004A066C /* SetupDetailVCUIElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupDetailVCUIElements.swift; sourceTree = "<group>"; };
@@ -52,6 +53,7 @@
 		87D89BEF2655614E00E6667B /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		87D89BF1265561AE00E6667B /* SecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTableViewCell.swift; sourceTree = "<group>"; };
 		87EA9EDC26627E0C00D7E090 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		87FD7933266966DA00AC26EF /* FavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,10 +71,12 @@
 			isa = PBXGroup;
 			children = (
 				8730D69E26204F0800A026F8 /* ViewController.swift */,
+				8730D6BA2620795600A026F8 /* Extensions */,
+				87FD7933266966DA00AC26EF /* FavouriteViewController.swift */,
 				87D89BEF2655614E00E6667B /* TableViewController.swift */,
 				87B8219F265D421200A55829 /* SearchTableViewController.swift */,
 				87EA9EDC26627E0C00D7E090 /* DetailViewController.swift */,
-				8730D6BA2620795600A026F8 /* Extensions */,
+				87E9FB3C266A2FED009216AD /* DetailVCExtensions */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -80,7 +84,7 @@
 		871675F52653F8320051D12E /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				871675F32653F8280051D12E /* TableViewCell.swift */,
+				871675F32653F8280051D12E /* AllCocktailTableViewCell.swift */,
 				871D7B852663D8D3004A066C /* DetailTableViewCell.swift */,
 				87D89BF1265561AE00E6667B /* SecondTableViewCell.swift */,
 				87B821A1265D43D300A55829 /* SearchTableViewCell.swift */,
@@ -124,8 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				8730D6B72620578E00A026F8 /* SetupViewElements.swift */,
-				871D7B892663E14A004A066C /* SetupDetailVCUIElements.swift */,
-				871D7B872663E102004A066C /* DetailViewController + TableViewDataSourse.swift */,
 				871675F52653F8320051D12E /* TableViewCells */,
 			);
 			path = Extensions;
@@ -155,6 +157,16 @@
 				87BCE78A26231E5E00E63365 /* CoreDataManager.swift */,
 			);
 			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		87E9FB3C266A2FED009216AD /* DetailVCExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				871D7B892663E14A004A066C /* SetupDetailVCUIElements.swift */,
+				871D7B872663E102004A066C /* DetailViewController + TableViewDataSourse.swift */,
+			);
+			name = DetailVCExtensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,9 +241,10 @@
 				8730D69F26204F0800A026F8 /* ViewController.swift in Sources */,
 				87D89BF2265561AE00E6667B /* SecondTableViewCell.swift in Sources */,
 				871D7B8A2663E14A004A066C /* SetupDetailVCUIElements.swift in Sources */,
+				87FD7934266966DA00AC26EF /* FavouriteViewController.swift in Sources */,
 				87B821A426611CC100A55829 /* DownloadMethod.swift in Sources */,
 				8730D6B82620578E00A026F8 /* SetupViewElements.swift in Sources */,
-				871675F42653F8280051D12E /* TableViewCell.swift in Sources */,
+				871675F42653F8280051D12E /* AllCocktailTableViewCell.swift in Sources */,
 				87B821A0265D421200A55829 /* SearchTableViewController.swift in Sources */,
 				87EA9EDD26627E0C00D7E090 /* DetailViewController.swift in Sources */,
 				87D89BF02655614E00E6667B /* TableViewController.swift in Sources */,

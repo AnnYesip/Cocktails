@@ -67,6 +67,23 @@ class CoreDataManager {
     
   }
   
+//  func saveEntityForSearch(_ name: String, image: Data, id: String) {
+//    guard let searchDescription = NSEntityDescription.entity(forEntityName: "EntityForSearch", in: mainMOC) else { return }
+//    let search = NSManagedObject(entity: searchDescription, insertInto: mainMOC) as! EntityForSearch
+//    search.name = name
+//    search.id = id
+//    search.image = image
+//    
+//    do {
+//      try mainMOC.save()
+//    } catch let error as NSError {
+//      print(error)
+//    }
+//    
+//  }
+  
+  
+  
   func saveSearchByIdCocktail(_ name: String,
                               image: Data,
                               id: String,
@@ -86,7 +103,22 @@ class CoreDataManager {
                               strIngredient12: String,
                               strIngredient13: String,
                               strIngredient14: String,
-                              strIngredient15: String) {
+                              strIngredient15: String,
+                              strMeasure1: String,
+                              strMeasure2: String,
+                              strMeasure3: String,
+                              strMeasure4: String,
+                              strMeasure5: String,
+                              strMeasure6: String,
+                              strMeasure7: String,
+                              strMeasure8: String,
+                              strMeasure9: String,
+                              strMeasure10: String,
+                              strMeasure11: String,
+                              strMeasure12: String,
+                              strMeasure13: String,
+                              strMeasure14: String,
+                              strMeasure15: String) {
     guard let searchByIdDescription = NSEntityDescription.entity(forEntityName: "SearchById", in: mainMOC) else { return }
     let searchResults = NSManagedObject(entity: searchByIdDescription, insertInto: mainMOC) as! SearchById
     searchResults.name = name
@@ -109,6 +141,23 @@ class CoreDataManager {
     searchResults.strIngredient13 = strIngredient13
     searchResults.strIngredient14 = strIngredient14
     searchResults.strIngredient15 = strIngredient15
+    
+    searchResults.strMeasure1 = strMeasure1
+    searchResults.strMeasure2 = strMeasure2
+    searchResults.strMeasure3 = strMeasure3
+    searchResults.strMeasure4 = strMeasure4
+    searchResults.strMeasure5 = strMeasure5
+    searchResults.strMeasure6 = strMeasure6
+    searchResults.strMeasure7 = strMeasure7
+    searchResults.strMeasure8 = strMeasure8
+    searchResults.strMeasure9 = strMeasure9
+    searchResults.strMeasure10 = strMeasure10
+    searchResults.strMeasure11 = strMeasure11
+    searchResults.strMeasure12 = strMeasure12
+    searchResults.strMeasure13 = strMeasure13
+    searchResults.strMeasure14 = strMeasure14
+    searchResults.strMeasure15 = strMeasure15
+    
     
     do {
       try mainMOC.save()
@@ -170,6 +219,20 @@ class CoreDataManager {
     return []
   }
   
+//  func fetchCocktailsForSearch() -> [EntityForSearch] {
+//    let fetchRequest: NSFetchRequest<EntityForSearch> = EntityForSearch.fetchRequest()
+//
+//    do {
+//      let cocktails = try mainMOC.fetch(fetchRequest)
+//      return cocktails
+//    } catch let error as NSError {
+//      print(error)
+//    }
+//    return []
+//  }
+  
+  
+  
   //     MARK: -  delete Cocktails
   func deleteAllData() {
     //      delete Alcoholic Cocktails
@@ -196,7 +259,15 @@ class CoreDataManager {
     } catch let error as NSError {
       print(error)
     }
-    //      delete Recommended Cocktails
+    
+
+
+    
+    
+    
+  }
+  //      delete Recommended Cocktails
+  func deleteRecommendedCocktails(){
     let fetchRecommendedCocktailsRequest: NSFetchRequest<Recommended> = Recommended.fetchRequest()
     
     do {
@@ -208,9 +279,6 @@ class CoreDataManager {
     } catch let error as NSError {
       print(error)
     }
-    
-    
-    
   }
   
   
@@ -228,6 +296,24 @@ class CoreDataManager {
       print(error)
     }
   }
+  
+//  func deleteSerchCocktails() {
+//    //      delete Search By  Cocktails
+//    let fetchRequest: NSFetchRequest<EntityForSearch> = EntityForSearch.fetchRequest()
+//
+//    do {
+//      let cocktails = try mainMOC.fetch(fetchRequest)
+//      for item in cocktails {
+//        mainMOC.delete(item)
+//      }
+//      try mainMOC.save()
+//    } catch let error as NSError {
+//      print(error)
+//    }
+//  }
+
+  
+  
   
   deinit {
     print("deallocating \(self)")

@@ -10,10 +10,43 @@ import Foundation
 
 extension DetailViewController{
   
+  func setupScrollView(){
+    NSLayoutConstraint.activate([
+      scroll.topAnchor.constraint(equalTo: view.topAnchor),
+      scroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      scroll.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      scroll.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+    ])
+    scroll.addSubview(contentView)
+
+  }
+  
+  
+  func setupContentView() {
+    let heightConstraint = contentView.heightAnchor.constraint(
+      equalTo: scroll.safeAreaLayoutGuide.heightAnchor
+    )
+    heightConstraint.priority = UILayoutPriority(rawValue: 250)
+    NSLayoutConstraint.activate([
+      contentView.topAnchor.constraint(equalTo: scroll.topAnchor),
+      contentView.leadingAnchor.constraint(equalTo: scroll.leadingAnchor),
+      contentView.trailingAnchor.constraint(equalTo: scroll.trailingAnchor),
+      contentView.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
+      contentView.widthAnchor.constraint(equalTo: scroll.widthAnchor),
+      heightConstraint
+    ])
+    contentView.addSubview(cocktailName)
+    contentView.addSubview(cocktailImage)
+    contentView.addSubview(categoryLabel)
+    contentView.addSubview(cocktailInstruction)
+    contentView.addSubview(firstTableView)
+  }
+  
+  
   func setupCocktailsName(){
     NSLayoutConstraint.activate([
-      cocktailName.topAnchor.constraint(equalTo: view.topAnchor, constant: 15),
-      cocktailName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      cocktailName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+      cocktailName.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
     ])
     cocktailName.font = .boldSystemFont(ofSize: 20)
   }
@@ -21,9 +54,9 @@ extension DetailViewController{
   func setupCocktailImage(){
     NSLayoutConstraint.activate([
       cocktailImage.topAnchor.constraint(equalTo: cocktailName.bottomAnchor, constant: 15),
-      cocktailImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      cocktailImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.45),
-      cocktailImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9)
+      cocktailImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+      cocktailImage.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.3),
+      cocktailImage.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.9)
     ])
     cocktailImage.layer.masksToBounds = true
     cocktailImage.layer.cornerRadius = 10
@@ -33,7 +66,7 @@ extension DetailViewController{
     NSLayoutConstraint.activate([
       categoryLabel.topAnchor.constraint(equalTo: cocktailImage.bottomAnchor, constant: 5),
       categoryLabel.rightAnchor.constraint(equalTo: cocktailImage.rightAnchor),
-      categoryLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9)
+      categoryLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.9)
     ])
     categoryLabel.textColor = .systemGray
   }
@@ -43,36 +76,34 @@ extension DetailViewController{
     NSLayoutConstraint.activate([
       cocktailInstruction.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 5),
       cocktailInstruction.rightAnchor.constraint(equalTo: categoryLabel.rightAnchor),
-      cocktailInstruction.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
+      cocktailInstruction.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.9),
     ])
     cocktailInstruction.sizeToFit()
     cocktailInstruction.isScrollEnabled = false
     cocktailInstruction.font = UIFont.systemFont(ofSize: 15)
   }
   
-  func setupIngredientsLabel(){
-    NSLayoutConstraint.activate([
-      ingredientsLabel.topAnchor.constraint(equalTo: cocktailInstruction.bottomAnchor, constant: 15),
-      ingredientsLabel.rightAnchor.constraint(equalTo: cocktailInstruction.rightAnchor),
-      ingredientsLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
-    ])
-    ingredientsLabel.font = .boldSystemFont(ofSize: 20)
-    ingredientsLabel.text = "Ingredients"
-  }
   
   //MARK: setup TableView -
-  func setupTableView(){
-    tableView.translatesAutoresizingMaskIntoConstraints = false
+  func setupFirstTableView(){
+    firstTableView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      tableView.topAnchor.constraint(equalTo: ingredientsLabel.bottomAnchor, constant: 15),
-      tableView.rightAnchor.constraint(equalTo: ingredientsLabel.rightAnchor),
-      tableView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
-      tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 10),
+      firstTableView.topAnchor.constraint(equalTo: cocktailInstruction.bottomAnchor, constant: 15),
+      firstTableView.rightAnchor.constraint(equalTo: cocktailInstruction.rightAnchor),
+      firstTableView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.9),
+      firstTableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+//      firstTableView.heightAnchor.constraint(equalTo: scroll.heightAnchor, multiplier: 0.3)
     ])
-    tableView.sizeToFit()
-    tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: "IdentifierDetail")
-    tableView.isScrollEnabled = false
-    tableView.tableFooterView = UIView(frame: .zero)
+//    firstTableView.rowHeight = UITableView.automaticDimension
+    firstTableView.sizeToFit()
+    firstTableView.backgroundColor = .systemRed
+    firstTableView.register(DetailTableViewCell.self, forCellReuseIdentifier: "IdentifierDetail")
+    firstTableView.isScrollEnabled = false
+//    tableView.sectionFooterHeight = 0.f
+//    tableView.sectionHeaderHeight = 0.f
+    firstTableView.tableFooterView = UIView()
   }
+  
+  
   
 }

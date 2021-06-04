@@ -13,10 +13,35 @@ class SearchTableViewCell: UITableViewCell {
       return "Identifier2"
   }
   
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+  //MARK: UIElements -
+
+
+let cocktailsLabel = UILabel.createDefaultLabel()
+
+  //MARK: UIMethods -
+
+  func setupCocktailLabel(){
+    NSLayoutConstraint.activate([
+      cocktailsLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+      cocktailsLabel.leftAnchor.constraint(equalTo: contentView.rightAnchor, constant: 5)
+
+    ])
+    cocktailsLabel.numberOfLines = 0
+    cocktailsLabel.font = UIFont.boldSystemFont(ofSize: 20)
+  }
+  
+  
+  
+  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+      super.init(style: style, reuseIdentifier: reuseIdentifier)
+      contentView.addSubview(cocktailsLabel)
+      setupCocktailLabel()
+
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

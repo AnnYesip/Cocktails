@@ -48,21 +48,7 @@ struct Drink: Codable {
   let strMeasure12: String?
   let strMeasure13: String?
   let strMeasure14: String?
-  let strMeasure15: String?
-  
-  
+  let strMeasure15: String? 
 }
 
-
-// MARK: - Cocktails
-struct Cocktails2: Codable {
-  let drinks: [Drink]
-}
-
-// MARK: - Drink
-struct Drink2: Codable {
-  let strDrink: String
-  let strDrinkThumb: String
-  let idDrink: String
-}
 

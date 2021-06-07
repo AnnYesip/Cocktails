@@ -58,8 +58,6 @@ class NetworkManager{
     }
   }
   
-  
-  
   deinit {
     print("deallocating \(self)")
   }

@@ -8,9 +8,7 @@
 import UIKit
 
 class FavouriteViewController: UIViewController {
-  
   let label = UILabel.createDefaultLabel()
-  
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +19,7 @@ class FavouriteViewController: UIViewController {
   
   func setupLabel(){
     NSLayoutConstraint.activate([
-      label.topAnchor.constraint(equalTo: view.topAnchor, constant: 45),
+      label.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
       label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
     ])
     label.text = "Your favourite cocktails"

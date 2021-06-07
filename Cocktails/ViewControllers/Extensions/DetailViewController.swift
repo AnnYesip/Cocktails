@@ -27,6 +27,7 @@ class DetailViewController: UIViewController, UITableViewDelegate {
   let contentView = UIView.createDefaultView()
   var cocktailName = UILabel.createDefaultLabel()
   var cocktailImage = UIImageView.createDefaultImageView()
+  let saveButton = UIButton.createDefaultButton()
   var categoryLabel = UILabel.createDefaultLabel()
   var cocktailInstruction = UITextView.createDefaultTextView()
   var firstTableView = UITableView()
@@ -42,21 +43,17 @@ class DetailViewController: UIViewController, UITableViewDelegate {
     firstTableView.dataSource = self
     firstTableView.tag = 1
     
-    
     setupScrollView()
     setupContentView()
     setupCocktailsName()
     setupCocktailImage()
+    setupSaveButton()
     setupCategoryLabel()
     setupCocktailInstruction()
     setupFirstTableView()
-    
-    
     updateInterface()
-    
-    
-    
   }
+  
   //MARK:  func -
   func updateInterface(){
     download.downloadSearchByIdCocktails(id: id) {
@@ -128,6 +125,23 @@ class DetailViewController: UIViewController, UITableViewDelegate {
       self.measure.append(data)
     }
   }
+  
+  //MARK:- buttomFunc
+  
+  @objc func click(sender: UIButton) {
+      print("save button tapped")
+      if sender.currentImage == UIImage(systemName: "bookmark") {
+        sender.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        } else {
+          sender.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        }
+    }
+  
+  //MARK: deinit -
+  deinit {
+    print("deallocating \(self)")
+  }
+  
   
 }
 

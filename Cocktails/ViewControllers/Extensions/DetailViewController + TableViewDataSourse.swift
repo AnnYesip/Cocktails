@@ -8,8 +8,6 @@
 import UIKit
 
 extension DetailViewController: UITableViewDataSource {
-  
-  
   func numberOfSections(in tableView: UITableView) -> Int {
     2
   }
@@ -21,7 +19,9 @@ extension DetailViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     headerTitles[section]
   }
-  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 50
+  }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if indexPath.section == 0{
@@ -37,9 +37,4 @@ extension DetailViewController: UITableViewDataSource {
     }
     return UITableViewCell()
   }
-  
-  
-  
-  
-  
 }

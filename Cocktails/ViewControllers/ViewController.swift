@@ -46,12 +46,8 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     setupNonAlcoholicButton()
 
     updateCollectionView()
-    
   }
-  
 
-  
-  
   //MARK: downloadData -
   func updateCollectionView() {
     coreDataManager.deleteRecommendedCocktails()
@@ -60,19 +56,16 @@ class ViewController: UIViewController, UICollectionViewDelegate {
       }
     }
     
-    downloadData.downloadNonAlcoholicDataCocktails(){
+    downloadData.downloadNonAlcoholicDataCocktails() {
       DispatchQueue.main.asyncAfter(deadline: .now()) {
       }
     }
     
-
-    
-    downloadData.downloadRecommendedCocktails(){
+    downloadData.downloadRecommendedCocktails() {
       DispatchQueue.main.asyncAfter(deadline: .now()) {
       }
     }
   }
-  
   
   //MARK: objc func -
   @objc func search() {
@@ -114,7 +107,6 @@ extension UIScrollView {
   }
 }
 
-
 extension UIView {
   static func createDefaultView() -> UIView {
     let view = UIView()
@@ -122,7 +114,6 @@ extension UIView {
     return view
   }
 }
-
 
 extension UILabel {
   static func createDefaultLabel() -> UILabel {

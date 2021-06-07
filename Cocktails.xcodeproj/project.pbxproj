@@ -75,8 +75,7 @@
 				87FD7933266966DA00AC26EF /* FavouriteViewController.swift */,
 				87D89BEF2655614E00E6667B /* TableViewController.swift */,
 				87B8219F265D421200A55829 /* SearchTableViewController.swift */,
-				87EA9EDC26627E0C00D7E090 /* DetailViewController.swift */,
-				87E9FB3C266A2FED009216AD /* DetailVCExtensions */,
+				87E9FB3C266A2FED009216AD /* DetailVC */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -159,13 +158,14 @@
 			path = "Core Data";
 			sourceTree = "<group>";
 		};
-		87E9FB3C266A2FED009216AD /* DetailVCExtensions */ = {
+		87E9FB3C266A2FED009216AD /* DetailVC */ = {
 			isa = PBXGroup;
 			children = (
+				87EA9EDC26627E0C00D7E090 /* DetailViewController.swift */,
 				871D7B892663E14A004A066C /* SetupDetailVCUIElements.swift */,
 				871D7B872663E102004A066C /* DetailViewController + TableViewDataSourse.swift */,
 			);
-			name = DetailVCExtensions;
+			name = DetailVC;
 			path = Extensions;
 			sourceTree = "<group>";
 		};

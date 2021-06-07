@@ -11,14 +11,11 @@ extension ViewController{
   //MARK: NavigationController -
   func setupNavigationController(){
     navigationController?.navigationBar.backgroundColor = .clear
-//    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search,
-//                                                        target: self,
-//                                                        action: #selector(search) )
-//    navigationItem.rightBarButtonItem?.tintColor = .black
+
     navigationController?.navigationBar.prefersLargeTitles = true
     navigationItem.title = "Cocktails"
-
   }
+  
   //MARK: setupScrollView -
   func setupScrollView(){
     NSLayoutConstraint.activate([
@@ -29,9 +26,8 @@ extension ViewController{
     ])
     scrollView.addSubview(recommendedView)
     scrollView.addSubview(buttonView)
-
-
   }
+  
   //MARK: RecommendedView -
   func setupRecommendedView() {
     NSLayoutConstraint.activate([
@@ -47,18 +43,6 @@ extension ViewController{
     recommendedView.addGestureRecognizer(tap)
   }
 
-  @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-      print("tap tap ")
-    let secondVC = DetailViewController()
-    
-    coreDataManager.fetchRecommendedCocktails().forEach { data in
-      guard let cocktailId = data.id else { return }
-      secondVC.id = cocktailId
-    }
-
-    navigationController?.present(secondVC, animated: true )
-  }
-
   func setupRecommendedImage() {
     NSLayoutConstraint.activate([
       recommendedImage.topAnchor.constraint(equalTo: recommendedView.topAnchor),
@@ -67,11 +51,16 @@ extension ViewController{
       recommendedImage.heightAnchor.constraint(equalTo: recommendedView.heightAnchor)
     ])
     recommendedImage.addSubview(recommendedLabel)
-
-    coreDataManager.fetchRecommendedCocktails().forEach { image in
-      guard let imageData = image.image else { return }
-      guard let image = UIImage(data: imageData) else { return }
-      recommendedImage.image = image
+    
+    downloadData.downloadRecommendedCocktails() {
+      DispatchQueue.main.asyncAfter(deadline: .now()) {
+        self.coreDataManager.fetchRecommendedCocktails().forEach { data in
+          guard let imageData = data.image else { return }
+          guard let image = UIImage(data: imageData) else { return }
+          self.recommendedImage.image = image
+          self.recommendedCocktailName.text = data.name
+        }
+      }
     }
     recommendedImage.layer.masksToBounds = true
     recommendedImage.layer.cornerRadius = 10
@@ -84,11 +73,13 @@ extension ViewController{
       recommendedLabel.topAnchor.constraint(equalTo: recommendedView.topAnchor),
       recommendedLabel.centerXAnchor.constraint(equalTo: recommendedView.centerXAnchor),
     ])
-    recommendedLabel.text = " we recommend to try "
+    recommendedLabel.text = "  we recommend  "
+    recommendedLabel.backgroundColor = .black
+    recommendedLabel.layer.masksToBounds = true
+    recommendedLabel.layer.cornerRadius = 10
     recommendedLabel.textColor = .white
     recommendedLabel.font = .boldSystemFont(ofSize: 15)
   }
-  
   
   func setupBlur() {
     blurView.translatesAutoresizingMaskIntoConstraints = false
@@ -100,7 +91,6 @@ extension ViewController{
     ])
     blurView.layer.masksToBounds = true
     blurView.layer.cornerRadius = 10
-    
   }
 
   func setupRecommendedCocktailName() {
@@ -110,25 +100,18 @@ extension ViewController{
         recommendedCocktailName.widthAnchor.constraint(equalTo: recommendedImage.widthAnchor),
         recommendedCocktailName.heightAnchor.constraint(equalTo: recommendedImage.heightAnchor, multiplier: 0.25)
       ])
-
     recommendedCocktailName.sendSubviewToBack(blurView)
-//    recommendedCocktailName.backgroundColor = .systemBlue
     recommendedCocktailName.textAlignment = .center
     recommendedCocktailName.layer.masksToBounds = true
     recommendedCocktailName.layer.cornerRadius = 10
     recommendedCocktailName.font = .boldSystemFont(ofSize: 20)
-    coreDataManager.fetchRecommendedCocktails().forEach { name in
-      guard let name = name.name else { return }
-      recommendedCocktailName.text = name
-    }
-
   }
 
   //MARK: Buttons -
   
   func setupButtonView(){
     NSLayoutConstraint.activate([
-      buttonView.topAnchor.constraint(equalTo: recommendedView.bottomAnchor, constant: -15),
+      buttonView.topAnchor.constraint(equalTo: recommendedView.bottomAnchor, constant: 0),
       buttonView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
       buttonView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.7),
       buttonView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
@@ -142,27 +125,23 @@ extension ViewController{
   
   func setupAlcoholicButton(){
     NSLayoutConstraint.activate([
-      alcoholicButton.topAnchor.constraint(equalTo: recommendedView.bottomAnchor, constant: 40),
+      alcoholicButton.topAnchor.constraint(equalTo: recommendedView.bottomAnchor, constant: 30),
       alcoholicButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
       alcoholicButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
       alcoholicButton.heightAnchor.constraint(equalToConstant: 100),
-      alcoholicButton.widthAnchor.constraint(equalTo: scrollView.widthAnchor , multiplier: 0.9)
+      alcoholicButton.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.9)
     ])
     alcoholicButton.backgroundColor = .orange
     alcoholicButton.layer.cornerRadius = 10
     alcoholicButton.setTitle("Alcoholic cocktails", for: UIControl.State.normal)
     alcoholicButton.setTitleColor(.white, for: .normal)
     alcoholicButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
-
     alcoholicButton.addTarget(self, action: #selector(handleLogOutButton), for: .touchUpInside)
-
     alcoholicButton.layer.shadowOpacity = 0.3
     alcoholicButton.layer.shadowRadius = 9.0
     alcoholicButton.layer.shadowColor = UIColor.black.cgColor
     
   }
-  
-  
 
   func setupNonAlcoholicButton(){
     NSLayoutConstraint.activate([
@@ -183,7 +162,7 @@ extension ViewController{
     nonAlcoholicButton.layer.shadowColor = UIColor.black.cgColor
   }
   
-  //MARK: ButtonsFunc -
+  //MARK: Funcs -
   func animateButton(sender: UIButton) {
 
       sender.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
@@ -195,9 +174,20 @@ extension ViewController{
                                  options: UIView.AnimationOptions.allowUserInteraction,
                                  animations: {
                                   sender.transform = CGAffineTransform.identity
-          },
-                                 completion: { Void in()  }
-      )
+                                 },
+                                 completion: { Void in()  } )
+  }
+  
+// handleTap
+  @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+      print("tap tap ")
+    let secondVC = DetailViewController()
+    
+    coreDataManager.fetchRecommendedCocktails().forEach { data in
+      guard let cocktailId = data.id else { return }
+      secondVC.id = cocktailId
+    }
+    navigationController?.present(secondVC, animated: true )
   }
   
   

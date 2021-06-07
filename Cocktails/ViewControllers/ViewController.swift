@@ -24,16 +24,18 @@ class ViewController: UIViewController, UICollectionViewDelegate {
   let recommendedCocktailName = UILabel.createDefaultLabel()
   let alcoholicButton = UIButton.createDefaultButton()
   let nonAlcoholicButton = UIButton.createDefaultButton()
+  var bubble = UIView()
   
   //MARK: viewDidLoad -
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
-    view.addSubview(scrollView)
-    
     tabBarController?.tabBar.layer.masksToBounds = true
     tabBarController?.tabBar.layer.cornerRadius = 20
-    
+    tabBarController?.tabBar.barTintColor = .black
+    tabBarController?.tabBar.tintColor = .white
+    updateCollectionView()
+    view.addSubview(scrollView)
     setupNavigationController()
     setupScrollView()
     setupRecommendedView()
@@ -44,24 +46,15 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     setupRecommendedCocktailName()
     setupAlcoholicButton()
     setupNonAlcoholicButton()
-
-    updateCollectionView()
   }
 
   //MARK: downloadData -
   func updateCollectionView() {
-    coreDataManager.deleteRecommendedCocktails()
     downloadData.downloadAlcoholicDataCocktails() {
       DispatchQueue.main.asyncAfter(deadline: .now()) {
       }
     }
-    
     downloadData.downloadNonAlcoholicDataCocktails() {
-      DispatchQueue.main.asyncAfter(deadline: .now()) {
-      }
-    }
-    
-    downloadData.downloadRecommendedCocktails() {
       DispatchQueue.main.asyncAfter(deadline: .now()) {
       }
     }

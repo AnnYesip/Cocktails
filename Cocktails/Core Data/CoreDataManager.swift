@@ -33,7 +33,6 @@ class CoreDataManager {
     } catch let error as NSError {
       print(error)
     }
-    
   }
   
   func saveNonAlcoholicCocktails(_ name: String, image: Data, id: String, strInstructions: String) {
@@ -48,7 +47,6 @@ class CoreDataManager {
     } catch let error as NSError {
       print(error)
     }
-    
   }
   
   func saveRecommendedCocktails(_ name: String, image: Data, id: String, strInstructions: String) {
@@ -64,26 +62,9 @@ class CoreDataManager {
     } catch let error as NSError {
       print(error)
     }
-    
   }
   
-//  func saveEntityForSearch(_ name: String, image: Data, id: String) {
-//    guard let searchDescription = NSEntityDescription.entity(forEntityName: "EntityForSearch", in: mainMOC) else { return }
-//    let search = NSManagedObject(entity: searchDescription, insertInto: mainMOC) as! EntityForSearch
-//    search.name = name
-//    search.id = id
-//    search.image = image
-//    
-//    do {
-//      try mainMOC.save()
-//    } catch let error as NSError {
-//      print(error)
-//    }
-//    
-//  }
-  
-  
-  
+
   func saveSearchByIdCocktail(_ name: String,
                               image: Data,
                               id: String,
@@ -158,21 +139,18 @@ class CoreDataManager {
     searchResults.strMeasure14 = strMeasure14
     searchResults.strMeasure15 = strMeasure15
     
-    
     do {
       try mainMOC.save()
     } catch let error as NSError {
       print(error)
     }
-    
+
   }
   
   
   //     MARK: -  fetch Cocktails
-  
   func fetchCocktails() -> [AlcoholicCocktails] {
     let fetchRequest: NSFetchRequest<AlcoholicCocktails> = AlcoholicCocktails.fetchRequest()
-    
     do {
       let cocktails = try mainMOC.fetch(fetchRequest)
       return cocktails
@@ -184,7 +162,6 @@ class CoreDataManager {
   
   func fetchNonAlcoholicCocktails() -> [NonAlcoholicCocktails] {
     let fetchRequest: NSFetchRequest<NonAlcoholicCocktails> = NonAlcoholicCocktails.fetchRequest()
-    
     do {
       let cocktails = try mainMOC.fetch(fetchRequest)
       return cocktails
@@ -196,7 +173,6 @@ class CoreDataManager {
   
   func fetchRecommendedCocktails() -> [Recommended] {
     let fetchRequest: NSFetchRequest<Recommended> = Recommended.fetchRequest()
-    
     do {
       let cocktails = try mainMOC.fetch(fetchRequest)
       return cocktails
@@ -205,8 +181,7 @@ class CoreDataManager {
     }
     return []
   }
-  
-  
+    
   func fetchSearchByIdCocktail() -> [SearchById] {
     let fetchRequest: NSFetchRequest<SearchById> = SearchById.fetchRequest()
     
@@ -218,19 +193,6 @@ class CoreDataManager {
     }
     return []
   }
-  
-//  func fetchCocktailsForSearch() -> [EntityForSearch] {
-//    let fetchRequest: NSFetchRequest<EntityForSearch> = EntityForSearch.fetchRequest()
-//
-//    do {
-//      let cocktails = try mainMOC.fetch(fetchRequest)
-//      return cocktails
-//    } catch let error as NSError {
-//      print(error)
-//    }
-//    return []
-//  }
-  
   
   
   //     MARK: -  delete Cocktails
@@ -259,15 +221,10 @@ class CoreDataManager {
     } catch let error as NSError {
       print(error)
     }
-    
-
-
-    
-    
-    
   }
+  
   //      delete Recommended Cocktails
-  func deleteRecommendedCocktails(){
+  func deleteRecommendedCocktails() {
     let fetchRecommendedCocktailsRequest: NSFetchRequest<Recommended> = Recommended.fetchRequest()
     
     do {
@@ -281,9 +238,8 @@ class CoreDataManager {
     }
   }
   
-  
+  //      delete Search By Id Cocktails
   func deleteSerchbyIdCocktail() {
-    //      delete Search By Id Cocktails
     let fetchRequest: NSFetchRequest<SearchById> = SearchById.fetchRequest()
     
     do {
@@ -296,21 +252,6 @@ class CoreDataManager {
       print(error)
     }
   }
-  
-//  func deleteSerchCocktails() {
-//    //      delete Search By  Cocktails
-//    let fetchRequest: NSFetchRequest<EntityForSearch> = EntityForSearch.fetchRequest()
-//
-//    do {
-//      let cocktails = try mainMOC.fetch(fetchRequest)
-//      for item in cocktails {
-//        mainMOC.delete(item)
-//      }
-//      try mainMOC.save()
-//    } catch let error as NSError {
-//      print(error)
-//    }
-//  }
 
   
   

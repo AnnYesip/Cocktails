@@ -52,7 +52,7 @@ final class Download {
   
   //MARK: Recommended Cocktail Data -
   func downloadRecommendedCocktails(completion: @escaping () -> Void) {
-    coreDataManager.deleteAllData()
+    coreDataManager.deleteRecommendedCocktails()
     let queue = DispatchQueue(label: "images", qos: .utility)
     
     self.networkManager.fetchData(for: .random) { [unowned self] (cocktail) in
@@ -62,6 +62,8 @@ final class Download {
           guard let data = try? Data(contentsOf: imageUrl) else { return }
           DispatchQueue.main.async {
             coreDataManager.saveRecommendedCocktails(drink.strDrink, image: data, id: drink.idDrink, strInstructions: drink.strInstructions ?? "рецепт отсутствует")
+            coreDataManager.fetchRecommendedCocktails().forEach { data in
+            }
             completion()
             
           }

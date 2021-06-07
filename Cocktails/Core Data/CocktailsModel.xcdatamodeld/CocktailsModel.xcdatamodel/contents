@@ -6,11 +6,6 @@
         <attribute name="name" attributeType="String"/>
         <attribute name="strInstructions" attributeType="String" defaultValueString="null"/>
     </entity>
-    <entity name="EntityForSearch" representedClassName="EntityForSearch" syncable="YES" codeGenerationType="class">
-        <attribute name="id" attributeType="String"/>
-        <attribute name="image" attributeType="Binary"/>
-        <attribute name="name" attributeType="String"/>
-    </entity>
     <entity name="NonAlcoholicCocktails" representedClassName="NonAlcoholicCocktails" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="String"/>
         <attribute name="image" attributeType="Binary"/>
@@ -65,6 +60,5 @@
         <element name="NonAlcoholicCocktails" positionX="-63" positionY="9" width="128" height="89"/>
         <element name="Recommended" positionX="-63" positionY="27" width="128" height="89"/>
         <element name="SearchById" positionX="-45" positionY="54" width="128" height="554"/>
-        <element name="EntityForSearch" positionX="-54" positionY="144" width="128" height="74"/>
     </elements>
 </model>

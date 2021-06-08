@@ -14,12 +14,11 @@ class AllAlcoholSecondTableViewCell: UITableViewCell {
   }
   
   //MARK: UIElements -
-  
   let cocktailImage = UIImageView.createDefaultImageView()
   let cocktailsLabel = UILabel.createDefaultLabel()
   
   //MARK: UIMethods -
-  func setupCoctailImage(){
+  func setupCoctailImage() {
     NSLayoutConstraint.activate([
       cocktailImage.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
       cocktailImage.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -220),
@@ -31,7 +30,7 @@ class AllAlcoholSecondTableViewCell: UITableViewCell {
     cocktailImage.backgroundColor = .black
   }
   
-  func setupCocktailLabel(){
+  func setupCocktailLabel() {
     NSLayoutConstraint.activate([
       cocktailsLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 25),
       cocktailsLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant:  90),
@@ -42,7 +41,6 @@ class AllAlcoholSecondTableViewCell: UITableViewCell {
   }
   
   //MARK: Initializer -
-  
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     contentView.addSubview(cocktailImage)

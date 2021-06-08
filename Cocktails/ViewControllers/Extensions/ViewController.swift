@@ -45,6 +45,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     setupRecommendedCocktailName()
     setupAlcoholicButton()
     setupNonAlcoholicButton()
+  
   }
   
   //MARK: deinit -

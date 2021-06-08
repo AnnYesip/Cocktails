@@ -14,13 +14,12 @@ class TableViewCell: UITableViewCell {
     }
     
     //MARK: UIElements -
-
   let cocktailImage = UIImageView.createDefaultImageView()
   let cocktailsLabel = UILabel.createDefaultLabel()
   let cocktailText = UITextView.createDefaultTextView()
 
     //MARK: UIMethods -
-  func setupCoctailImage(){
+  func setupCoctailImage() {
     NSLayoutConstraint.activate([
       cocktailImage.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
       cocktailImage.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -220),
@@ -32,7 +31,7 @@ class TableViewCell: UITableViewCell {
     cocktailImage.backgroundColor = .black
   }
   
-  func setupCocktailLabel(){
+  func setupCocktailLabel() {
     NSLayoutConstraint.activate([
       cocktailsLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 25),
       cocktailsLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant:  90),
@@ -42,7 +41,7 @@ class TableViewCell: UITableViewCell {
     cocktailsLabel.font = UIFont.boldSystemFont(ofSize: 20)
   }
   
-  func setupcocktailText(){
+  func setupcocktailText() {
     NSLayoutConstraint.activate([
       cocktailText.topAnchor.constraint(equalTo: cocktailsLabel.bottomAnchor, constant: 25),
       cocktailText.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant:  110),

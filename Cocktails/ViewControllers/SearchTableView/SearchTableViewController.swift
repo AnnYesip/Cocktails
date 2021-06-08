@@ -14,10 +14,14 @@ class SearchTableViewController:
   UISearchResultsUpdating,
   UISearchControllerDelegate
 {
+  //MARK: UIElements -
   var cocktailArray: [String] = []
   var cocktailId: [String] = []
+  var cocktailAlcoOrNo: [String] = []
+  var cocktailImage: [Data] = []
   var searchController = UISearchController()
   
+  // MARK: - viewDidLoad
   override func viewDidLoad() {
     super.viewDidLoad()
     self.tableView.register(
@@ -34,20 +38,20 @@ class SearchTableViewController:
     searchController.searchBar.isSearchResultsButtonSelected = true
     searchController.searchBar.delegate = self
   }
-  
-  
+  // MARK: - searchBarShouldBeginEditing
   func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
     cocktailId.removeAll()
+    cocktailImage.removeAll()
     cocktailArray.removeAll()
     tableView.reloadData()
     print("searchBarShouldBeginEditing")
     return true
   }
-  
-  func updateSearchResults(for searchController: UISearchController) {
+  // MARK: - searchBarTextDidEndEditing
+  func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
     let queue = DispatchQueue(label: "downloadQueue", qos: .utility)
     guard let text = searchController.searchBar.text else { return }
-    let urlString = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=\(text)"
+    let urlString = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=\(text)"
     guard let url = URL(string: urlString) else { return }
     let session = URLSession.shared
     queue.async {
@@ -56,21 +60,25 @@ class SearchTableViewController:
         do {
           let json = try JSONDecoder().decode(Cocktails.self, from: data)
           json.drinks.forEach { data in
-            let dataStr = data.strDrink
-            let dataId = data.idDrink
+            guard let imageUrl = URL(string: data.strDrinkThumb) else { return }
+            guard let dataImage = try? Data(contentsOf: imageUrl) else { return }
             DispatchQueue.main.async {
-              self.cocktailId.append(dataId)
-              self.cocktailArray.append(dataStr)
+              self.cocktailImage.append(dataImage)
+              self.cocktailAlcoOrNo.append(data.strAlcoholic ?? "i dont know :(")
+              self.cocktailId.append(data.idDrink)
+              self.cocktailArray.append(data.strDrink)
               self.tableView.reloadData()
             }
-            
           }
         }catch let error as NSError {
-                    print(error)
+          print(error)
         }
       }.resume()
     }
-    
+  }
+  
+  // MARK: - updateSearchResults
+  func updateSearchResults(for searchController: UISearchController) {
   }
   
   // MARK: - Table view data source
@@ -85,12 +93,14 @@ class SearchTableViewController:
     guard let cell = self.tableView.dequeueReusableCell(
             withIdentifier: SearchTableViewCell.reuseIdentifier,
             for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
-    cell.textLabel?.text = cocktailArray[indexPath.row]
+    cell.cocktailsLabel.text = cocktailArray[indexPath.row]
+    cell.cocktailImage.image = UIImage(data: cocktailImage[indexPath.row])
+    cell.cocktailsAlcoholLabel.text = cocktailAlcoOrNo[indexPath.row]
     return cell
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 80
+    return 150
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

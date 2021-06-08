@@ -49,8 +49,8 @@ class TableViewController: UITableViewController {
       return cell
     } else if tableView.tag == 2 {
       print("tag 2")
-      tableView.register(SecondTableViewCell.self, forCellReuseIdentifier: SecondTableViewCell.reuseIdentifier)
-      let cell = tableView.dequeueReusableCell(withIdentifier: SecondTableViewCell.reuseIdentifier, for: indexPath) as! SecondTableViewCell
+      tableView.register(AllAlcoholSecondTableViewCell.self, forCellReuseIdentifier: AllAlcoholSecondTableViewCell.reuseIdentifier)
+      let cell = tableView.dequeueReusableCell(withIdentifier: AllAlcoholSecondTableViewCell.reuseIdentifier, for: indexPath) as! AllAlcoholSecondTableViewCell
       let cocktail = coreDataManager.fetchNonAlcoholicCocktails()[indexPath.row]
       cell.cocktailImage.image = UIImage(data: cocktail.image!)
       cell.cocktailImage.clipsToBounds = true

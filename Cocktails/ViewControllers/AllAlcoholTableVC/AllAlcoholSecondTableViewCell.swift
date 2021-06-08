@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SecondTableViewCell: UITableViewCell {
+class AllAlcoholSecondTableViewCell: UITableViewCell {
   
   class var reuseIdentifier: String {
     return "Identifier"

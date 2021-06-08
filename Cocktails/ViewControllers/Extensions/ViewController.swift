@@ -110,8 +110,3 @@ extension UIVisualEffectView {
     return blurView
   }
 }
-
-
-
-
-

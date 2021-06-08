@@ -11,30 +11,28 @@ extension ViewController{
   //MARK: NavigationController -
   func setupNavigationController(){
     navigationController?.navigationBar.backgroundColor = .clear
-    
     navigationController?.navigationBar.prefersLargeTitles = true
     navigationItem.title = "Cocktails"
   }
   
-  //MARK: setupScrollView -
-  func setupScrollView(){
+  func setupContentView() {
     NSLayoutConstraint.activate([
-      scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-      scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      contentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      contentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+      contentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
     ])
-    scrollView.addSubview(recommendedView)
-    scrollView.addSubview(buttonView)
+    contentView.addSubview(recommendedView)
+    contentView.addSubview(buttonView)
   }
-  
+
   //MARK: RecommendedView -
   func setupRecommendedView() {
     NSLayoutConstraint.activate([
-      recommendedView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-      recommendedView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-      recommendedView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.45),
-      recommendedView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+      recommendedView.topAnchor.constraint(equalTo: contentView.topAnchor),
+      recommendedView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+      recommendedView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.6),
+      recommendedView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.9)
     ])
     recommendedView.addSubview(recommendedLabel)
     recommendedView.addSubview(recommendedImage)
@@ -47,7 +45,7 @@ extension ViewController{
     NSLayoutConstraint.activate([
       recommendedImage.topAnchor.constraint(equalTo: recommendedView.topAnchor),
       recommendedImage.centerXAnchor.constraint(equalTo: recommendedView.centerXAnchor),
-      recommendedImage.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+      recommendedImage.widthAnchor.constraint(equalTo: recommendedView.widthAnchor),
       recommendedImage.heightAnchor.constraint(equalTo: recommendedView.heightAnchor)
     ])
     recommendedImage.addSubview(recommendedLabel)
@@ -111,9 +109,9 @@ extension ViewController{
   func setupButtonView(){
     NSLayoutConstraint.activate([
       buttonView.topAnchor.constraint(equalTo: recommendedView.bottomAnchor, constant: 0),
-      buttonView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-      buttonView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.7),
-      buttonView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+      buttonView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+      buttonView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.7),
+      buttonView.widthAnchor.constraint(equalTo: contentView.widthAnchor)
     ])
     buttonView.backgroundColor = .white
     buttonView.layer.cornerRadius = 10
@@ -122,14 +120,14 @@ extension ViewController{
   }
   
   func setupAlcoholicButton(){
+    alcoholicButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       alcoholicButton.topAnchor.constraint(equalTo: recommendedView.bottomAnchor, constant: 30),
-      alcoholicButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-      alcoholicButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+      alcoholicButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
       alcoholicButton.heightAnchor.constraint(equalToConstant: 100),
-      alcoholicButton.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.9)
+      alcoholicButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.9)
     ])
-    alcoholicButton.backgroundColor = .orange
+//    alcoholicButton.backgroundColor = .orange
     alcoholicButton.layer.cornerRadius = 10
     alcoholicButton.setTitle("Alcoholic cocktails", for: UIControl.State.normal)
     alcoholicButton.setTitleColor(.white, for: .normal)
@@ -141,13 +139,13 @@ extension ViewController{
   }
   
   func setupNonAlcoholicButton(){
+    nonAlcoholicButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       nonAlcoholicButton.topAnchor.constraint(equalTo: alcoholicButton.bottomAnchor, constant: 20),
       nonAlcoholicButton.trailingAnchor.constraint(equalTo: alcoholicButton.trailingAnchor),
       nonAlcoholicButton.heightAnchor.constraint(equalToConstant: 100),
-      nonAlcoholicButton.widthAnchor.constraint(equalTo: scrollView.widthAnchor , multiplier: 0.9)
+      nonAlcoholicButton.widthAnchor.constraint(equalTo: contentView.widthAnchor , multiplier: 0.9)
     ])
-    nonAlcoholicButton.backgroundColor = .orange
     nonAlcoholicButton.setTitle(" Non Alcoholic cocktails", for: UIControl.State.normal)
     nonAlcoholicButton.setTitleColor(.white, for: .normal)
     nonAlcoholicButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
@@ -159,3 +157,5 @@ extension ViewController{
   }
 
 }
+
+

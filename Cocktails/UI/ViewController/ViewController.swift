@@ -25,7 +25,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
   let alcoholicButton = ActualGradientButton()
   let nonAlcoholicButton = ActualGradientButton()
 //  colors
-  let barTintColor = UIColor(red: 32/255, green: 4/255, blue: 64/255, alpha: 1)
+  let barTintColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
   let unselectedItemTintColor = UIColor(red: 248/255, green: 249/255, blue: 251/255, alpha: 0.5)
   
   //MARK: viewDidLoad -

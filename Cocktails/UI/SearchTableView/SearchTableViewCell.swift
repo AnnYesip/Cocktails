@@ -7,9 +7,8 @@
 
 import UIKit
 
-class SearchTableViewCell: UITableViewCell {
-  
-  class var reuseIdentifier: String {
+final class SearchTableViewCell: UITableViewCell {
+  static var reuseIdentifier: String {
     return "Identifier2"
   }
   
@@ -26,7 +25,6 @@ class SearchTableViewCell: UITableViewCell {
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
   
   //MARK: UIElements -
   let cocktailsLabel = UILabel.createDefaultLabel()

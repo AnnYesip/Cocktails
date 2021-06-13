@@ -12,11 +12,23 @@ final class FavouriteTableViewCell: UITableViewCell {
     return "IdentifierFavouriteCocktails"
   }
   
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
+  //MARK: Initializer -
+  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    super.init(style: style, reuseIdentifier: reuseIdentifier)
+    contentView.addSubview(cocktailImage)
+    contentView.addSubview(cocktailsLabel)
+    setupCoctailImage()
+    setupCocktailLabel()
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+  }
+  
   //MARK: UIElements -
   let cocktailImage = UIImageView.createDefaultImageView()
   let cocktailsLabel = UILabel.createDefaultLabel()
@@ -43,22 +55,4 @@ final class FavouriteTableViewCell: UITableViewCell {
     cocktailsLabel.numberOfLines = 0
     cocktailsLabel.font = UIFont.boldSystemFont(ofSize: 20)
   }
-  
-  //MARK: Initializer -
-  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
-    contentView.addSubview(cocktailImage)
-    contentView.addSubview(cocktailsLabel)
-    setupCoctailImage()
-    setupCocktailLabel()
-  }
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-  }
-
 }

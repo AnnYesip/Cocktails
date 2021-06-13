@@ -8,10 +8,9 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, UICollectionViewDelegate {
+final class MainScreenViewController: UIViewController, UICollectionViewDelegate {
   let coreDataManager = CoreDataManager()
-  let tableVC = TableViewController()
-  let downloadData = Download()
+  let cocktailDataManager = CocktailDataManager()
   var tableId: Int? = nil
   
   //MARK: UIElements -
@@ -24,21 +23,20 @@ class ViewController: UIViewController, UICollectionViewDelegate {
   let recommendedCocktailName = UILabel.createDefaultLabel()
   let alcoholicButton = ActualGradientButton()
   let nonAlcoholicButton = ActualGradientButton()
-//  colors
-  let barTintColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
-  let unselectedItemTintColor = UIColor(red: 248/255, green: 249/255, blue: 251/255, alpha: 0.5)
+  let lightBlackColor = UIColor.lightBlackColor
+  let lightGreyColor = UIColor.lightGrayColor
   
-  //MARK: viewDidLoad -
+  //MARK:- Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
     tabBarController?.tabBar.layer.masksToBounds = true
     tabBarController?.tabBar.layer.cornerRadius = 20
-    tabBarController?.tabBar.barTintColor = barTintColor
+    tabBarController?.tabBar.barTintColor = lightBlackColor
     tabBarController?.tabBar.tintColor = .white
-    tabBarController?.tabBar.unselectedItemTintColor = unselectedItemTintColor
-    downloadData.downloadNonAlcoholicDataCocktails()
-    downloadData.downloadAlcoholicDataCocktails()
+    tabBarController?.tabBar.unselectedItemTintColor = lightGreyColor
+    cocktailDataManager.downloadNonAlcoholicDataCocktails()
+    cocktailDataManager.downloadAlcoholicDataCocktails()
     setupNavigationController()
     view.addSubview(contentView)
     setupContentView()
@@ -53,13 +51,13 @@ class ViewController: UIViewController, UICollectionViewDelegate {
   }
   
   //MARK: NavigationController -
-  func setupNavigationController(){
+  private func setupNavigationController(){
     navigationController?.navigationBar.backgroundColor = .clear
     navigationController?.navigationBar.prefersLargeTitles = true
     navigationItem.title = "Cocktails"
   }
   
-  func setupContentView() {
+  private func setupContentView() {
     NSLayoutConstraint.activate([
       contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       contentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -71,7 +69,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
   }
   
   //MARK: RecommendedView -
-  func setupRecommendedView() {
+  private func setupRecommendedView() {
     NSLayoutConstraint.activate([
       recommendedView.topAnchor.constraint(equalTo: contentView.topAnchor),
       recommendedView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -85,7 +83,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     recommendedView.addGestureRecognizer(tap)
   }
   
-  func setupRecommendedImage() {
+  private func setupRecommendedImage() {
     NSLayoutConstraint.activate([
       recommendedImage.topAnchor.constraint(equalTo: recommendedView.topAnchor),
       recommendedImage.centerXAnchor.constraint(equalTo: recommendedView.centerXAnchor),
@@ -94,7 +92,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     ])
     recommendedImage.addSubview(recommendedLabel)
     
-    downloadData.downloadRecommendedCocktails() {
+    cocktailDataManager.downloadRecommendedCocktails() {
       DispatchQueue.main.asyncAfter(deadline: .now()) {
         self.coreDataManager.fetchRecommendedCocktails().forEach { data in
           guard let imageData = data.image else { return }
@@ -110,7 +108,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     recommendedImage.addSubview(recommendedCocktailName)
   }
   
-  func setupRecommendedLabel() {
+  private func setupRecommendedLabel() {
     NSLayoutConstraint.activate([
       recommendedLabel.topAnchor.constraint(equalTo: recommendedView.topAnchor),
       recommendedLabel.centerXAnchor.constraint(equalTo: recommendedView.centerXAnchor),
@@ -123,7 +121,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     recommendedLabel.font = .boldSystemFont(ofSize: 15)
   }
   
-  func setupBlur() {
+  private func setupBlur() {
     blurView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       blurView.bottomAnchor.constraint(equalTo: recommendedCocktailName.bottomAnchor),
@@ -135,7 +133,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     blurView.layer.cornerRadius = 10
   }
   
-  func setupRecommendedCocktailName() {
+  private func setupRecommendedCocktailName() {
     NSLayoutConstraint.activate([
       recommendedCocktailName.centerXAnchor.constraint(equalTo: recommendedImage.centerXAnchor),
       recommendedCocktailName.bottomAnchor.constraint(equalTo: recommendedImage.bottomAnchor),
@@ -150,7 +148,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
   }
   
   //MARK: Buttons -
-  func setupButtonView(){
+  private func setupButtonView(){
     NSLayoutConstraint.activate([
       buttonView.topAnchor.constraint(equalTo: recommendedView.bottomAnchor, constant: 0),
       buttonView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -163,7 +161,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     buttonView.addSubview(nonAlcoholicButton)
   }
   
-  func setupAlcoholicButton(){
+  private func setupAlcoholicButton(){
     alcoholicButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       alcoholicButton.topAnchor.constraint(equalTo: recommendedView.bottomAnchor, constant: 30),
@@ -181,7 +179,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     alcoholicButton.layer.shadowColor = UIColor.black.cgColor
   }
   
-  func setupNonAlcoholicButton(){
+  private func setupNonAlcoholicButton(){
     nonAlcoholicButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       nonAlcoholicButton.topAnchor.constraint(equalTo: alcoholicButton.bottomAnchor, constant: 20),

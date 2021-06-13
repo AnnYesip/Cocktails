@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let windowScene = (scene as? UIWindowScene) else { return }
     let win = UIWindow(windowScene: windowScene)
     
-    let navController = UINavigationController(rootViewController: ViewController())
+    let navController = UINavigationController(rootViewController: MainScreenViewController())
     let secVC = FavouriteViewController()
     let thirdVC = UINavigationController(rootViewController:SearchTableViewController())
     

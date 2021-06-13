@@ -24,7 +24,7 @@ class CoreDataManager {
     strInstructions: String
   ) {
     guard let entityDescription = NSEntityDescription.entity(
-            forEntityName: "AlcoholicCocktails", in: mainMOC
+      forEntityName: "AlcoholicCocktails", in: mainMOC
     ) else { return }
     let cocktail = NSManagedObject(entity: entityDescription, insertInto: mainMOC) as! AlcoholicCocktails
     cocktail.name = name
@@ -46,7 +46,7 @@ class CoreDataManager {
     strInstructions: String
   ) {
     guard let secondEntityDescription = NSEntityDescription.entity(
-            forEntityName: "NonAlcoholicCocktails", in: mainMOC
+      forEntityName: "NonAlcoholicCocktails", in: mainMOC
     ) else { return }
     let secondCocktail = NSManagedObject(
       entity: secondEntityDescription,
@@ -70,8 +70,8 @@ class CoreDataManager {
     strInstructions: String
   ) {
     guard let recommendedDescription = NSEntityDescription.entity(
-            forEntityName: "Recommended",
-            in: mainMOC
+      forEntityName: "Recommended",
+      in: mainMOC
     ) else { return }
     let recommended = NSManagedObject(entity: recommendedDescription, insertInto: mainMOC) as! Recommended
     recommended.name = name
@@ -124,7 +124,7 @@ class CoreDataManager {
     strMeasure15: String
   ) {
     guard let searchByIdDescription = NSEntityDescription.entity(
-            forEntityName: "SearchById", in: mainMOC
+      forEntityName: "SearchById", in: mainMOC
     ) else { return }
     let searchResults = NSManagedObject(entity: searchByIdDescription, insertInto: mainMOC) as! SearchById
     searchResults.name = name
@@ -274,9 +274,6 @@ class CoreDataManager {
       print(error)
     }
   }
-  
-  
-  
   
   deinit {
     print("deallocating \(self)")

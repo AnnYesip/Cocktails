@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class Download {
+final class CocktailDataManager {
   let coreDataManager = CoreDataManager()
-  var networkManager = NetworkManager()
+  let networkManager = NetworkManager()
   
   //MARK: AlcoholicData -
   func downloadAlcoholicDataCocktails() {

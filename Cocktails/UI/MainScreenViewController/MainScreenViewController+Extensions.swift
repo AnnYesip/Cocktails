@@ -7,11 +7,11 @@
 
 import UIKit
 
-extension ViewController{
-  
-  
+//MARK:- Targerts & actions
+extension MainScreenViewController{
   //MARK: objc func open TableView -
   @objc func openAlcoholicTV() {
+    let tableVC = TableViewController()
     animateButton(sender: alcoholicButton)
     tableVC.modalPresentationStyle = .fullScreen
     tableVC.tableView.tag = 1
@@ -21,6 +21,7 @@ extension ViewController{
   }
   
   @objc func openNonAlcoholicTV() {
+    let tableVC = TableViewController()
     animateButton(sender: nonAlcoholicButton)
     tableVC.modalPresentationStyle = .fullScreen
     tableVC.tableView.tag = 2
@@ -29,7 +30,18 @@ extension ViewController{
     print("open second table view")
   }
   
-  //MARK: animateButton -
+  @objc func openDetailVC(_ sender: UITapGestureRecognizer? = nil) {
+    let secondVC = DetailViewController()
+    coreDataManager.fetchRecommendedCocktails().forEach { [weak secondVC = secondVC] data in
+      guard let cocktailId = data.id, let secondVC = secondVC  else { return }
+      secondVC.id = cocktailId
+    }
+    navigationController?.present(secondVC, animated: true )
+  }
+}
+
+//MARK:- Animations
+private extension MainScreenViewController {
   func animateButton(sender: UIButton) {
     // specify the property you want to animate
     let zoomInAndOut = CABasicAnimation(keyPath: "transform.scale")
@@ -48,17 +60,4 @@ extension ViewController{
     // add the animation to your button
     sender.layer.add(zoomInAndOut, forKey: nil)
   }
-  
-  //MARK: open DetailVC -
-  @objc func openDetailVC(_ sender: UITapGestureRecognizer? = nil) {
-    let secondVC = DetailViewController()
-    coreDataManager.fetchRecommendedCocktails().forEach { [weak secondVC = secondVC] data in
-      guard let cocktailId = data.id, let secondVC = secondVC  else { return }
-      secondVC.id = cocktailId
-    }
-    navigationController?.present(secondVC, animated: true )
-  }
-  
-  
-  
 }

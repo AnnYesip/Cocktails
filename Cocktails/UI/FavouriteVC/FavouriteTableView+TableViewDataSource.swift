@@ -7,10 +7,8 @@
 
 import UIKit
 
-
-extension FavouriteViewController:  UITableViewDataSource, UITableViewDelegate {
-  // MARK: - Table view data source
-  
+// MARK: - Table view data source
+extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 3
   }
@@ -20,16 +18,16 @@ extension FavouriteViewController:  UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //    tableView.register(FavouriteTableViewCell.self, forCellReuseIdentifier: FavouriteTableViewCell.reuseIdentifier)
-    let cell = self.tableView.dequeueReusableCell(withIdentifier: FavouriteTableViewCell.reuseIdentifier, for: indexPath) as! FavouriteTableViewCell
+    let cell = self.tableView.dequeueReusableCell(
+      withIdentifier: FavouriteTableViewCell.reuseIdentifier,
+      for: indexPath
+    ) as! FavouriteTableViewCell
     cell.cocktailsLabel.text = "cocktails"
     return UITableViewCell()
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let secondVC = DetailViewController()
-    
     navigationController?.present(secondVC, animated: true)
   }
-  
 }

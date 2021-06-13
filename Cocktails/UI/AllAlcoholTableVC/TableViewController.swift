@@ -10,7 +10,7 @@ import UIKit
 final class TableViewController: UITableViewController {
   let coreDataManager = CoreDataManager()
   let networkManager = NetworkManager()
-  let downloadData = Download()
+  let cocktailDataManager = CocktailDataManager()
   var tableId: Int = 0
   
   override func viewDidLoad() {
@@ -85,4 +85,7 @@ final class TableViewController: UITableViewController {
     navigationController?.present(secondVC, animated: true)
   }
   
+  deinit {
+    print("Deallocating \(self)")
+  }
 }

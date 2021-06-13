@@ -6,9 +6,9 @@
 //
 
 import UIKit
-//MARK:- Extensions
 
-class SearchTableViewController:
+//MARK:- Extensions
+final class SearchTableViewController:
   UITableViewController,
   UISearchBarDelegate,
   UISearchResultsUpdating,

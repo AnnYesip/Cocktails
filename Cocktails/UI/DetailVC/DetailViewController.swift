@@ -7,9 +7,9 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UITableViewDelegate {
+final class DetailViewController: UIViewController, UITableViewDelegate {
   let coreData = CoreDataManager()
-  let download  = Download()
+  let cocktailDataManager  = CocktailDataManager()
   let favVC = FavouriteViewController()
   let headerTitles = ["Ingredients", "Measure"]
   var ingredients: [String] = []
@@ -19,12 +19,12 @@ class DetailViewController: UIViewController, UITableViewDelegate {
   //MARK: UIElements -
   let scroll = UIScrollView.createDefaultScrollView()
   let contentView = UIView.createDefaultView()
-  var cocktailName = UILabel.createDefaultLabel()
-  var cocktailImage = UIImageView.createDefaultImageView()
+  let cocktailName = UILabel.createDefaultLabel()
+  let cocktailImage = UIImageView.createDefaultImageView()
   let saveButton = UIButton.createDefaultButton()
-  var categoryLabel = UILabel.createDefaultLabel()
-  var cocktailInstruction = UITextView.createDefaultTextView()
-  var firstTableView = UITableView()
+  let categoryLabel = UILabel.createDefaultLabel()
+  let cocktailInstruction = UITextView.createDefaultTextView()
+  let firstTableView = UITableView()
   
   //MARK: viewDidLoad -
   override func viewDidLoad() {
@@ -49,7 +49,7 @@ class DetailViewController: UIViewController, UITableViewDelegate {
   
   //MARK:  func -
   func updateInterface(){
-    download.downloadSearchByIdCocktails(id: id) {
+    cocktailDataManager.downloadSearchByIdCocktails(id: id) {
       let data = self.coreData.fetchSearchByIdCocktail()
       data.forEach { data in
         guard let imageData = data.image else { return }

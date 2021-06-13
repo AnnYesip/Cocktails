@@ -18,6 +18,7 @@ final class FavouriteViewController: UIViewController {
     return table
   }()
   
+  //MARK:- Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
@@ -27,8 +28,8 @@ final class FavouriteViewController: UIViewController {
     view.addSubview(tableView)
     setupLabel()
     setupTableView()
-    
   }
+  
   private func setupLabel(){
     NSLayoutConstraint.activate([
       label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor , constant: 40),
@@ -45,14 +46,4 @@ final class FavouriteViewController: UIViewController {
       tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
     ])
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 }

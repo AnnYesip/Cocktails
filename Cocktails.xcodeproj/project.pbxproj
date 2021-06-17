@@ -25,6 +25,7 @@
 		8733323726760CDB003FE3FB /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8733323626760CDB003FE3FB /* UILabel+Extensions.swift */; };
 		8733323926760CE3003FE3FB /* UIVIew+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8733323826760CE3003FE3FB /* UIVIew+Extensions.swift */; };
 		8733323B26760CED003FE3FB /* UIScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8733323A26760CED003FE3FB /* UIScrollView+Extensions.swift */; };
+		87369A25267B802600811F31 /* AppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87369A24267B802600811F31 /* AppDelegateExtension.swift */; };
 		8790B7A92670F02300D66E14 /* FavouriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8790B7A82670F02300D66E14 /* FavouriteTableViewCell.swift */; };
 		87B351AA266F630B00F270CC /* MainScreenViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B351A9266F630A00F270CC /* MainScreenViewController+Extensions.swift */; };
 		87B821A0265D421200A55829 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B8219F265D421200A55829 /* SearchTableViewController.swift */; };
@@ -63,6 +64,7 @@
 		8733323626760CDB003FE3FB /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		8733323826760CE3003FE3FB /* UIVIew+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extensions.swift"; sourceTree = "<group>"; };
 		8733323A26760CED003FE3FB /* UIScrollView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extensions.swift"; sourceTree = "<group>"; };
+		87369A24267B802600811F31 /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
 		8790B7A82670F02300D66E14 /* FavouriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewCell.swift; sourceTree = "<group>"; };
 		87B351A9266F630A00F270CC /* MainScreenViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainScreenViewController+Extensions.swift"; sourceTree = "<group>"; };
 		87B8219F265D421200A55829 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,15 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
+		87369A26267B830A00811F31 /* AppDeledate */ = {
+			isa = PBXGroup;
+			children = (
+				8730D69A26204F0800A026F8 /* AppDelegate.swift */,
+				87369A24267B802600811F31 /* AppDelegateExtension.swift */,
+			);
+			path = AppDeledate;
+			sourceTree = "<group>";
+		};
 		87B351AB266F654800F270CC /* SearchTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,7 +239,7 @@
 		87CCD6F62673E8FB00F3C043 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				8730D69A26204F0800A026F8 /* AppDelegate.swift */,
+				87369A26267B830A00811F31 /* AppDeledate */,
 				8730D69C26204F0800A026F8 /* SceneDelegate.swift */,
 			);
 			path = Delegates;
@@ -383,6 +394,7 @@
 				871675F42653F8280051D12E /* AllCocktailTableViewCell.swift in Sources */,
 				87B821A0265D421200A55829 /* SearchTableViewController.swift in Sources */,
 				8733323126760CB7003FE3FB /* UITextView+Extensions.swift in Sources */,
+				87369A25267B802600811F31 /* AppDelegateExtension.swift in Sources */,
 				87EA9EDD26627E0C00D7E090 /* DetailViewController.swift in Sources */,
 				8733322A26760C46003FE3FB /* UIColor+Extensions.swift in Sources */,
 				87D89BF02655614E00E6667B /* TableViewController.swift in Sources */,

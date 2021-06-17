@@ -38,7 +38,6 @@ final class TableViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if tableView.tag == 1 {
-      print("tag 1")
       tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.reuseIdentifier)
       let cell = self.tableView.dequeueReusableCell(
         withIdentifier: TableViewCell.reuseIdentifier,
@@ -52,7 +51,6 @@ final class TableViewController: UITableViewController {
       return cell
       
     } else if tableView.tag == 2 {
-      print("tag 2")
       tableView.register(
         AllAlcoholSecondTableViewCell.self,
         forCellReuseIdentifier: AllAlcoholSecondTableViewCell.reuseIdentifier

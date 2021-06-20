@@ -10,7 +10,7 @@ import UIKit
 // MARK: - Table view data source
 extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 3
+    return coreDataManager.fetchFavouriteCocktails().count
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -18,12 +18,16 @@ extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = self.tableView.dequeueReusableCell( withIdentifier: FavouriteTableViewCell.reuseIdentifier,
-        for: indexPath ) as! FavouriteTableViewCell
-    cell.imageView?.image = #imageLiteral(resourceName: "Снимок экрана 2021-06-17 в 17.26.41")
+    let cell = self.tableView.dequeueReusableCell( withIdentifier: FavouriteTableViewCell.reuseIdentifier, for: indexPath
+    ) as! FavouriteTableViewCell
+    let cocktail = coreDataManager.fetchFavouriteCocktails()[indexPath.row]
+    
+    cell.textLabel?.text = cocktail.name
+    let imageData = cocktail.image
+    cell.imageView?.image = UIImage(data: imageData!)
+    
     cell.imageView?.layer.masksToBounds = true
     cell.imageView?.layer.cornerRadius = 10
-    cell.textLabel?.text = "cocktail"
     cell.textLabel?.font = .boldSystemFont(ofSize: 20)
     cell.detailTextLabel?.text = "click to see more"
     cell.detailTextLabel?.font = .systemFont(ofSize: 15)

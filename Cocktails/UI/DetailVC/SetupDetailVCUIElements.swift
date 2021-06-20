@@ -68,6 +68,7 @@ extension DetailViewController{
     ])
 
     saveButton.backgroundColor = .white
+
     saveButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
     saveButton.tintColor = .black
     saveButton.layer.cornerRadius = 10

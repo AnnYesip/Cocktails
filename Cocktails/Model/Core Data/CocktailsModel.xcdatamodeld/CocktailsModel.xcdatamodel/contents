@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="21A5248p" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AlcoholicCocktails" representedClassName="AlcoholicCocktails" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="String"/>
         <attribute name="image" attributeType="Binary"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="strInstructions" attributeType="String" defaultValueString="null"/>
+    </entity>
+    <entity name="FavouriteCocktails" representedClassName="FavouriteCocktails" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="String"/>
+        <attribute name="image" attributeType="Binary"/>
+        <attribute name="name" attributeType="String"/>
     </entity>
     <entity name="NonAlcoholicCocktails" representedClassName="NonAlcoholicCocktails" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="String"/>
@@ -61,5 +66,6 @@
         <element name="NonAlcoholicCocktails" positionX="-63" positionY="9" width="128" height="89"/>
         <element name="Recommended" positionX="-63" positionY="27" width="128" height="89"/>
         <element name="SearchById" positionX="-45" positionY="54" width="128" height="569"/>
+        <element name="FavouriteCocktails" positionX="-54" positionY="144" width="128" height="74"/>
     </elements>
 </model>

@@ -44,7 +44,6 @@ final class SearchTableViewController:
     cocktailImage.removeAll()
     cocktailArray.removeAll()
     tableView.reloadData()
-    print("searchBarShouldBeginEditing")
     return true
   }
   // MARK: - searchBarTextDidEndEditing

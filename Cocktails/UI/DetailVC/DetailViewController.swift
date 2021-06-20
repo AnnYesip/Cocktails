@@ -10,7 +10,6 @@ import UIKit
 final class DetailViewController: UIViewController, UITableViewDelegate {
   let coreData = CoreDataManager()
   let cocktailDataManager  = CocktailDataManager()
-  let favVC = FavouriteViewController()
   let headerTitles = ["Ingredients", "Measure"]
   var ingredients: [String] = []
   var measure: [String] = []
@@ -35,7 +34,7 @@ final class DetailViewController: UIViewController, UITableViewDelegate {
     firstTableView.delegate = self
     firstTableView.dataSource = self
     firstTableView.tag = 1
-
+    
     setupScrollView()
     setupContentView()
     setupCocktailsName()
@@ -125,8 +124,12 @@ final class DetailViewController: UIViewController, UITableViewDelegate {
     print("save button tapped")
     if sender.currentImage == UIImage(systemName: "bookmark") {
       sender.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+      guard let data = cocktailImage.image?.pngData() else { return }
+      guard let text = cocktailName.text else { return }
+      coreData.saveFavouriteCocktails(text, image: data, id: id)
     } else {
       sender.setImage(UIImage(systemName: "bookmark"), for: .normal)
+      coreData.deleteFavouriteCocktails()
     }
   }
   

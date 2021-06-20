@@ -11,10 +11,10 @@ import CoreData
 class CoreDataManager {
   let mainMOC = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   
-  enum RequestType{
-    case alcoholic
-    case nonAlcoholic
-  }
+//  enum RequestType{
+//    case alcoholic
+//    case nonAlcoholic
+//  }
   
   //MARK: -  save Cocktails
   func saveAlcoholicCocktails(
@@ -170,6 +170,28 @@ class CoreDataManager {
     }
   }
   
+  func saveFavouriteCocktails(
+    _ name: String,
+    image: Data,
+    id: String
+  ) {
+    guard let favouriteCocktailsEntityDescription = NSEntityDescription.entity(
+      forEntityName: "FavouriteCocktails", in: mainMOC
+    ) else { return }
+    let favouriteCocktails = NSManagedObject(
+      entity: favouriteCocktailsEntityDescription,
+      insertInto: mainMOC
+    ) as! FavouriteCocktails
+    favouriteCocktails.name = name
+    favouriteCocktails.id = id
+    favouriteCocktails.image = image
+    do {
+      try mainMOC.save()
+    } catch let error as NSError {
+      print(error)
+    }
+  }
+  
   //MARK: -  fetch Cocktails
   func fetchCocktails() -> [AlcoholicCocktails] {
     let fetchRequest: NSFetchRequest<AlcoholicCocktails> = AlcoholicCocktails.fetchRequest()
@@ -215,6 +237,19 @@ class CoreDataManager {
     }
     return []
   }
+  
+  func fetchFavouriteCocktails() -> [FavouriteCocktails] {
+    let fetchRequest: NSFetchRequest<FavouriteCocktails> = FavouriteCocktails.fetchRequest()
+    
+    do {
+      let cocktails = try mainMOC.fetch(fetchRequest)
+      return cocktails
+    } catch let error as NSError {
+      print(error)
+    }
+    return []
+  }
+
   
   
   //MARK:-  delete Cocktails
@@ -274,6 +309,22 @@ class CoreDataManager {
       print(error)
     }
   }
+  
+  func deleteFavouriteCocktails() {
+    let fetchRequest: NSFetchRequest<FavouriteCocktails> = FavouriteCocktails.fetchRequest()
+    
+    do {
+      let cocktails = try mainMOC.fetch(fetchRequest)
+      for item in cocktails {
+        mainMOC.delete(item)
+      }
+      try mainMOC.save()
+    } catch let error as NSError {
+      print(error)
+    }
+  }
+  
+  
   
   deinit {
     print("deallocating \(self)")

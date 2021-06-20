@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIColor {
-  static let lightBlackColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
-  static let lightGrayColor = UIColor(red: 248/255, green: 249/255, blue: 251/255, alpha: 0.5)
+  static let lightPinkColor = UIColor(red: 254/255, green: 97/255, blue: 46/255, alpha: 1)
+  static let lightGrayColor = UIColor(red: 133/255, green: 133/255, blue: 133/255, alpha: 1)
+  static let borderColor = CGColor(red: 167/255, green: 168/255, blue: 162/255, alpha: 1)
 }

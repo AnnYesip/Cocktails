@@ -23,17 +23,20 @@ final class MainScreenViewController: UIViewController, UICollectionViewDelegate
   let recommendedCocktailName = UILabel.createDefaultLabel()
   let alcoholicButton = ActualGradientButton()
   let nonAlcoholicButton = ActualGradientButton()
-  let lightBlackColor = UIColor.lightBlackColor
+  let lightPinkColor = UIColor.lightPinkColor
   let lightGreyColor = UIColor.lightGrayColor
+  let borderColor = UIColor.borderColor
   
   //MARK:- Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
     tabBarController?.tabBar.layer.masksToBounds = true
-    tabBarController?.tabBar.layer.cornerRadius = 20
-    tabBarController?.tabBar.barTintColor = lightBlackColor
-    tabBarController?.tabBar.tintColor = .white
+    tabBarController?.tabBar.layer.cornerRadius = 15
+    tabBarController?.tabBar.layer.borderWidth = 1
+    tabBarController?.tabBar.layer.borderColor = borderColor
+    tabBarController?.tabBar.barTintColor = .white
+    tabBarController?.tabBar.tintColor = lightPinkColor
     tabBarController?.tabBar.unselectedItemTintColor = lightGreyColor
     cocktailDataManager.downloadNonAlcoholicDataCocktails()
     cocktailDataManager.downloadAlcoholicDataCocktails()
@@ -113,7 +116,7 @@ final class MainScreenViewController: UIViewController, UICollectionViewDelegate
       recommendedLabel.topAnchor.constraint(equalTo: recommendedView.topAnchor),
       recommendedLabel.centerXAnchor.constraint(equalTo: recommendedView.centerXAnchor),
     ])
-    recommendedLabel.text = "  we recommend  "
+    recommendedLabel.text = "  cocktail of the day  "
     recommendedLabel.backgroundColor = .black
     recommendedLabel.layer.masksToBounds = true
     recommendedLabel.layer.cornerRadius = 10

@@ -127,8 +127,8 @@
 			children = (
 				87CCD6F82673EA9100F3C043 /* AppResources */,
 				8702F42226272EC10077AB41 /* UI */,
-				8733322826760C30003FE3FB /* Domain */,
 				87CCD6F72673EA8500F3C043 /* Model */,
+				8733322826760C30003FE3FB /* Domain */,
 			);
 			path = Cocktails;
 			sourceTree = "<group>";

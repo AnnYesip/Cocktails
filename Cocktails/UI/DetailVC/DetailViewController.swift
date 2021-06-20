@@ -35,7 +35,7 @@ final class DetailViewController: UIViewController, UITableViewDelegate {
     firstTableView.delegate = self
     firstTableView.dataSource = self
     firstTableView.tag = 1
-    
+
     setupScrollView()
     setupContentView()
     setupCocktailsName()

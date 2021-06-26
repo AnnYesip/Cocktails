@@ -9,6 +9,7 @@ import UIKit
 
 // MARK: - Table view data source
 extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return coreDataManager.fetchFavouriteCocktails().count
   }
@@ -20,12 +21,13 @@ extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = self.tableView.dequeueReusableCell( withIdentifier: FavouriteTableViewCell.reuseIdentifier, for: indexPath
     ) as! FavouriteTableViewCell
-    let cocktail = coreDataManager.fetchFavouriteCocktails()[indexPath.row]
     
+    cell.setSelected(true, animated: true)
+    cell.selectionStyle = .none
+    let cocktail = coreDataManager.fetchFavouriteCocktails()[indexPath.row]
     cell.textLabel?.text = cocktail.name
     let imageData = cocktail.image
     cell.imageView?.image = UIImage(data: imageData!)
-    
     cell.imageView?.layer.masksToBounds = true
     cell.imageView?.layer.cornerRadius = 10
     cell.textLabel?.font = .boldSystemFont(ofSize: 20)
@@ -35,7 +37,13 @@ extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let cocktail = coreDataManager.fetchFavouriteCocktails()[indexPath.row]
     let secondVC = DetailViewController()
-    navigationController?.present(secondVC, animated: true)
+    tableView.cellForRow(at: indexPath)?.selectionStyle = .none
+    guard let cocktailId = cocktail.id else { return }
+    print(cocktailId)
+    secondVC.id = cocktailId
+    tabBarController?.present(secondVC, animated: true)
   }
+  
 }

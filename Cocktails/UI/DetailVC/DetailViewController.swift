@@ -44,6 +44,7 @@ final class DetailViewController: UIViewController, UITableViewDelegate {
     setupCocktailInstruction()
     setupFirstTableView()
     updateInterface()
+    
   }
   
   //MARK:  func -
@@ -125,13 +126,16 @@ final class DetailViewController: UIViewController, UITableViewDelegate {
     if sender.currentImage == UIImage(systemName: "bookmark") {
       sender.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
       guard let data = cocktailImage.image?.pngData() else { return }
-      guard let text = cocktailName.text else { return }
-      coreData.saveFavouriteCocktails(text, image: data, id: id)
+      guard  let text = cocktailName.text else { return }
+      coreData.saveFavouriteCocktails(text, image: data , id: id)
+      
     } else {
       sender.setImage(UIImage(systemName: "bookmark"), for: .normal)
       coreData.deleteFavouriteCocktails()
+      print("удаляем коктейль")
     }
   }
+  
   
   //MARK: deinit -
   deinit {

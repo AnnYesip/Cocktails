@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-extension DetailViewController{
+extension DetailViewController {
   func setupScrollView(){
     NSLayoutConstraint.activate([
       scroll.topAnchor.constraint(equalTo: view.topAnchor),
@@ -39,8 +39,8 @@ extension DetailViewController{
     contentView.addSubview(cocktailInstruction)
     contentView.addSubview(firstTableView)
   }
-
-  func setupCocktailsName(){
+  
+  func setupCocktailsName() {
     NSLayoutConstraint.activate([
       cocktailName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
       cocktailName.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -48,7 +48,7 @@ extension DetailViewController{
     cocktailName.font = .boldSystemFont(ofSize: 20)
   }
   
-  func setupCocktailImage(){
+  func setupCocktailImage() {
     NSLayoutConstraint.activate([
       cocktailImage.topAnchor.constraint(equalTo: cocktailName.bottomAnchor, constant: 15),
       cocktailImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -66,16 +66,24 @@ extension DetailViewController{
       saveButton.heightAnchor.constraint(equalToConstant: 40),
       saveButton.widthAnchor.constraint(equalToConstant: 40)
     ])
-
     saveButton.backgroundColor = .white
-
-    saveButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
     saveButton.tintColor = .black
     saveButton.layer.cornerRadius = 10
     saveButton.addTarget(self, action: #selector(click), for: .touchUpInside)
+    
+    ///* setup buttons image. If id is already in the coreData(FavouriteCoctails), It is placed in a coreDataFetchId. Then if coreDataFetchId is empty, we will assign a picture "bookmark". If it is filled,  we will assign "bookmark.fill" *///
+    let coreDataFetchId = coreData.fetchFavouriteCocktails().filter{
+      return $0.id == id
+    }
+    
+    if coreDataFetchId.isEmpty {
+      saveButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
+    } else {
+      saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+    }
   }
   
-  func setupCategoryLabel(){
+  func setupCategoryLabel() {
     NSLayoutConstraint.activate([
       categoryLabel.topAnchor.constraint(equalTo: cocktailImage.bottomAnchor, constant: 5),
       categoryLabel.rightAnchor.constraint(equalTo: cocktailImage.rightAnchor),
@@ -83,8 +91,8 @@ extension DetailViewController{
     ])
     categoryLabel.textColor = .systemGray
   }
-
-  func setupCocktailInstruction(){
+  
+  func setupCocktailInstruction() {
     NSLayoutConstraint.activate([
       cocktailInstruction.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 5),
       cocktailInstruction.rightAnchor.constraint(equalTo: categoryLabel.rightAnchor),
@@ -94,9 +102,9 @@ extension DetailViewController{
     cocktailInstruction.isScrollEnabled = false
     cocktailInstruction.font = UIFont.systemFont(ofSize: 15)
   }
-
+  
   //MARK: setup TableView -
-  func setupFirstTableView(){
+  func setupFirstTableView() {
     firstTableView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       firstTableView.topAnchor.constraint(equalTo: cocktailInstruction.bottomAnchor, constant: 15),

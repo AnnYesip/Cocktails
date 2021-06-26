@@ -74,11 +74,13 @@ final class TableViewController: UITableViewController {
     if tableView.tag == 1{
       guard coreDataManager.fetchCocktails().count >= indexPath.row else { return }
       let cocktail = coreDataManager.fetchCocktails()[indexPath.row]
-      secondVC.id = cocktail.id ?? "1"
+      guard let cocktailId = cocktail.id else { return }
+      secondVC.id = cocktailId
     } else {
       guard coreDataManager.fetchNonAlcoholicCocktails().count >= indexPath.row else { return }
       let cocktail = coreDataManager.fetchNonAlcoholicCocktails()[indexPath.row]
-      secondVC.id = cocktail.id ?? "1"
+      guard let cocktailId = cocktail.id else { return }
+      secondVC.id = cocktailId
     }
     navigationController?.present(secondVC, animated: true)
   }

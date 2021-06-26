@@ -9,7 +9,6 @@ import UIKit
 
 final class FavouriteViewController: UIViewController {
   let coreDataManager = CoreDataManager()
-  
   let label = UILabel.createDefaultLabel()
   let tableView: UITableView = {
     let table = UITableView()
@@ -28,6 +27,10 @@ final class FavouriteViewController: UIViewController {
     view.addSubview(tableView)
     setupLabel()
     setupTableView()
+  }
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(true)
+    tableView.reloadData()
   }
   
   private func setupLabel(){

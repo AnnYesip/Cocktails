@@ -11,11 +11,6 @@ import CoreData
 class CoreDataManager {
   let mainMOC = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   
-//  enum RequestType{
-//    case alcoholic
-//    case nonAlcoholic
-//  }
-  
   //MARK: -  save Cocktails
   func saveAlcoholicCocktails(
     _ name: String,
@@ -249,7 +244,7 @@ class CoreDataManager {
     }
     return []
   }
-
+  
   
   
   //MARK:-  delete Cocktails
@@ -312,7 +307,6 @@ class CoreDataManager {
   
   func deleteFavouriteCocktails() {
     let fetchRequest: NSFetchRequest<FavouriteCocktails> = FavouriteCocktails.fetchRequest()
-    
     do {
       let cocktails = try mainMOC.fetch(fetchRequest)
       for item in cocktails {
@@ -323,9 +317,7 @@ class CoreDataManager {
       print(error)
     }
   }
-  
-  
-  
+
   deinit {
     print("deallocating \(self)")
   }

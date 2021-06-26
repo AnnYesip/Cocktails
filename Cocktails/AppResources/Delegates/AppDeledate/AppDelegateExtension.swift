@@ -13,9 +13,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
   func sendNotification() {
     let content = UNMutableNotificationContent()
     content.title = "Time to rest"
-    content.body = "How about cocktail?🍸😉"
+    content.body = "What about cocktail?🍸😉"
     content.sound = UNNotificationSound.default
-    let triget = UNTimeIntervalNotificationTrigger(timeInterval: 5 , repeats: false )
+    let triget = UNTimeIntervalNotificationTrigger(timeInterval: 10 , repeats: false )
     let request = UNNotificationRequest(identifier: "notification", content: content, trigger: triget)
     notificationCenter.add(request) { error in
       print(error?.localizedDescription as Any)

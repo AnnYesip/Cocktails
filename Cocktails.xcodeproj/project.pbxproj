@@ -26,6 +26,7 @@
 		8733323926760CE3003FE3FB /* UIVIew+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8733323826760CE3003FE3FB /* UIVIew+Extensions.swift */; };
 		8733323B26760CED003FE3FB /* UIScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8733323A26760CED003FE3FB /* UIScrollView+Extensions.swift */; };
 		87369A25267B802600811F31 /* AppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87369A24267B802600811F31 /* AppDelegateExtension.swift */; };
+		878E26DA26934BA300732D31 /* UIActivity+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878E26D926934BA300732D31 /* UIActivity+Extension.swift */; };
 		8790B7A92670F02300D66E14 /* FavouriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8790B7A82670F02300D66E14 /* FavouriteTableViewCell.swift */; };
 		87B351AA266F630B00F270CC /* MainScreenViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B351A9266F630A00F270CC /* MainScreenViewController+Extensions.swift */; };
 		87B821A0265D421200A55829 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B8219F265D421200A55829 /* SearchTableViewController.swift */; };
@@ -65,6 +66,7 @@
 		8733323826760CE3003FE3FB /* UIVIew+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extensions.swift"; sourceTree = "<group>"; };
 		8733323A26760CED003FE3FB /* UIScrollView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extensions.swift"; sourceTree = "<group>"; };
 		87369A24267B802600811F31 /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
+		878E26D926934BA300732D31 /* UIActivity+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivity+Extension.swift"; sourceTree = "<group>"; };
 		8790B7A82670F02300D66E14 /* FavouriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewCell.swift; sourceTree = "<group>"; };
 		87B351A9266F630A00F270CC /* MainScreenViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainScreenViewController+Extensions.swift"; sourceTree = "<group>"; };
 		87B8219F265D421200A55829 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				8733323426760CCF003FE3FB /* UIImageView+Extensions.swift */,
 				8733323626760CDB003FE3FB /* UILabel+Extensions.swift */,
 				8733322E26760CA9003FE3FB /* UIVisualEffect+Extensions.swift */,
+				878E26D926934BA300732D31 /* UIActivity+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				8733323126760CB7003FE3FB /* UITextView+Extensions.swift in Sources */,
 				87369A25267B802600811F31 /* AppDelegateExtension.swift in Sources */,
 				87EA9EDD26627E0C00D7E090 /* DetailViewController.swift in Sources */,
+				878E26DA26934BA300732D31 /* UIActivity+Extension.swift in Sources */,
 				8733322A26760C46003FE3FB /* UIColor+Extensions.swift in Sources */,
 				87D89BF02655614E00E6667B /* TableViewController.swift in Sources */,
 				8733323926760CE3003FE3FB /* UIVIew+Extensions.swift in Sources */,

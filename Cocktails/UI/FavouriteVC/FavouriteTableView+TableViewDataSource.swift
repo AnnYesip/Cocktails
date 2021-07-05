@@ -19,9 +19,11 @@ extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = self.tableView.dequeueReusableCell( withIdentifier: FavouriteTableViewCell.reuseIdentifier, for: indexPath
+    let cell = self.tableView.dequeueReusableCell(
+      withIdentifier: FavouriteTableViewCell.reuseIdentifier,
+      for: indexPath
     ) as! FavouriteTableViewCell
-    
+    guard coreDataManager.fetchFavouriteCocktails().count - 1 >= indexPath.row else { return UITableViewCell() }
     cell.setSelected(true, animated: true)
     cell.selectionStyle = .none
     let cocktail = coreDataManager.fetchFavouriteCocktails()[indexPath.row]
@@ -33,7 +35,7 @@ extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
     cell.textLabel?.font = .boldSystemFont(ofSize: 20)
     cell.detailTextLabel?.text = "click to see more"
     cell.detailTextLabel?.font = .systemFont(ofSize: 15)
-    return UITableViewCell()
+    return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

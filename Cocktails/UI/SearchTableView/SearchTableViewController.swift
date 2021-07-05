@@ -53,7 +53,7 @@ final class SearchTableViewController:
     let urlString = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=\(text)"
     guard let url = URL(string: urlString) else { return }
     let session = URLSession.shared
-    queue.async {
+    queue.sync {
       session.dataTask(with: url) { (data, response, error) in
         guard let data = data else { return }
         do {
@@ -69,7 +69,7 @@ final class SearchTableViewController:
               self.tableView.reloadData()
             }
           }
-        }catch let error as NSError {
+        } catch let error as NSError {
           print(error)
         }
       }.resume()

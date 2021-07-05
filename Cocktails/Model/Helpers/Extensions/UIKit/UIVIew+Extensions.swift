@@ -11,6 +11,7 @@ extension UIView {
   static func createDefaultView() -> UIView {
     let view = UIView()
     view.translatesAutoresizingMaskIntoConstraints = false
+    view.isOpaque = false
     return view
   }
 }

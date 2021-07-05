@@ -16,7 +16,8 @@ final class MainScreenViewController: UIViewController, UICollectionViewDelegate
   //MARK: UIElements -
   let contentView = UIView.createDefaultView()
   let buttonView = UIView.createDefaultView()
-  let recommendedView = UIView.createDefaultView()
+  let activityIndicator = UIActivityIndicatorView.createDefaultActivity()
+  var recommendedView = UIView.createDefaultView()
   let recommendedLabel = UILabel.createDefaultLabel()
   let recommendedImage = UIImageView.createDefaultImageView()
   let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
@@ -40,10 +41,11 @@ final class MainScreenViewController: UIViewController, UICollectionViewDelegate
     tabBarController?.tabBar.unselectedItemTintColor = lightGreyColor
     cocktailDataManager.downloadNonAlcoholicDataCocktails()
     cocktailDataManager.downloadAlcoholicDataCocktails()
-    setupNavigationController()
     view.addSubview(contentView)
+    setupNavigationController()
     setupContentView()
     setupRecommendedView()
+    setupActivityIndicator()
     setupRecommendedLabel()
     setupRecommendedImage()
     setupBlur()
@@ -73,19 +75,40 @@ final class MainScreenViewController: UIViewController, UICollectionViewDelegate
   
   //MARK: RecommendedView -
   private func setupRecommendedView() {
+    startActivityIndicator()
     NSLayoutConstraint.activate([
       recommendedView.topAnchor.constraint(equalTo: contentView.topAnchor),
       recommendedView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
       recommendedView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.6),
       recommendedView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.9)
     ])
+    recommendedView.addSubview(activityIndicator)
     recommendedView.addSubview(recommendedLabel)
     recommendedView.addSubview(recommendedImage)
     recommendedView.addSubview(recommendedCocktailName)
     let tap = UITapGestureRecognizer(target: self, action: #selector(self.openDetailVC(_:)))
     recommendedView.addGestureRecognizer(tap)
   }
+//  MARK: Activity Indicator
+  private func setupActivityIndicator() {
+    NSLayoutConstraint.activate([
+      activityIndicator.centerYAnchor.constraint(equalTo: recommendedView.centerYAnchor),
+      activityIndicator.centerXAnchor.constraint(equalTo: recommendedView.centerXAnchor),
+    ])
+    activityIndicator.color = .black
+    activityIndicator.style = .large
+  }
   
+  private func startActivityIndicator() {
+    activityIndicator.isHidden = false
+    activityIndicator.startAnimating()
+  }
+  
+  private func stopActivityIndicator() {
+    activityIndicator.stopAnimating()
+    activityIndicator.hidesWhenStopped = true
+  }
+  //  MARK: RecommendedView elements-
   private func setupRecommendedImage() {
     NSLayoutConstraint.activate([
       recommendedImage.topAnchor.constraint(equalTo: recommendedView.topAnchor),
@@ -100,6 +123,7 @@ final class MainScreenViewController: UIViewController, UICollectionViewDelegate
         self.coreDataManager.fetchRecommendedCocktails().forEach { data in
           guard let imageData = data.image else { return }
           guard let image = UIImage(data: imageData) else { return }
+          self.stopActivityIndicator()
           self.recommendedImage.image = image
           self.recommendedCocktailName.text = data.name
         }
@@ -109,6 +133,7 @@ final class MainScreenViewController: UIViewController, UICollectionViewDelegate
     recommendedImage.layer.cornerRadius = 10
     recommendedImage.addSubview(blurView)
     recommendedImage.addSubview(recommendedCocktailName)
+    
   }
   
   private func setupRecommendedLabel() {
@@ -116,7 +141,7 @@ final class MainScreenViewController: UIViewController, UICollectionViewDelegate
       recommendedLabel.topAnchor.constraint(equalTo: recommendedView.topAnchor),
       recommendedLabel.centerXAnchor.constraint(equalTo: recommendedView.centerXAnchor),
     ])
-    recommendedLabel.text = "  cocktail of the day  "
+    recommendedLabel.text = "cocktail of the day"
     recommendedLabel.backgroundColor = .black
     recommendedLabel.layer.masksToBounds = true
     recommendedLabel.layer.cornerRadius = 10
@@ -198,6 +223,8 @@ final class MainScreenViewController: UIViewController, UICollectionViewDelegate
     nonAlcoholicButton.layer.shadowOpacity = 0.3
     nonAlcoholicButton.layer.shadowRadius = 9.0
     nonAlcoholicButton.layer.shadowColor = UIColor.black.cgColor
+    nonAlcoholicButton.layer.shouldRasterize = true
+    nonAlcoholicButton.layer.rasterizationScale = UIScreen.main.scale
   }
   
   //MARK: deinit -

@@ -7,8 +7,7 @@
 
 import UIKit
 
-class ActualGradientButton: UIButton {
-  
+final class ActualGradientButton: UIButton {
   override func layoutSubviews() {
     super.layoutSubviews()
     setGradient()
@@ -21,6 +20,9 @@ class ActualGradientButton: UIButton {
     gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
     gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
     gradientLayer.cornerRadius = 16
+    guard
+      let sublayers = layer.sublayers,
+      !sublayers.contains(gradientLayer) else { return }
     layer.insertSublayer(gradientLayer, at: 0)
   }
 }

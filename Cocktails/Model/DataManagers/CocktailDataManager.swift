@@ -49,8 +49,6 @@ final class CocktailDataManager {
               id: drink.idDrink,
               strInstructions: drink.strInstructions ?? "рецепт отсутствует"
             )
-           
-            
           }
         }
       }
@@ -76,7 +74,6 @@ final class CocktailDataManager {
             coreDataManager.fetchRecommendedCocktails().forEach { data in
             }
             completion()
-            
           }
         }
       }
@@ -135,5 +132,4 @@ final class CocktailDataManager {
       }
     }
   }
-
 }

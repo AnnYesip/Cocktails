@@ -11,6 +11,7 @@ extension UIScrollView {
   static func createDefaultScrollView() -> UIScrollView {
     let scroll = UIScrollView()
     scroll.translatesAutoresizingMaskIntoConstraints = false
+    scroll.isOpaque = false
     return scroll
   }
 }

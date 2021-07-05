@@ -59,6 +59,7 @@ extension DetailViewController {
     cocktailImage.layer.cornerRadius = 10
     cocktailImage.sizeToFit()
   }
+  
   func setupSaveButton() {
     NSLayoutConstraint.activate([
       saveButton.topAnchor.constraint(equalTo: cocktailImage.topAnchor, constant: 3),
@@ -69,9 +70,11 @@ extension DetailViewController {
     saveButton.backgroundColor = .white
     saveButton.tintColor = .black
     saveButton.layer.cornerRadius = 10
-    saveButton.addTarget(self, action: #selector(click), for: .touchUpInside)
+    saveButton.addTarget(self, action: #selector(saveButtonFunc), for: .touchUpInside)
     
-    ///* setup buttons image. If id is already in the coreData(FavouriteCoctails), It is placed in a coreDataFetchId. Then if coreDataFetchId is empty, we will assign a picture "bookmark". If it is filled,  we will assign "bookmark.fill" *///
+    /** Setup buttons image. If id is already in the coreData(FavouriteCoctails),
+     It is placed in a coreDataFetchId. Then if coreDataFetchId is empty, we will assign a picture "bookmark".
+     If it is filled,  we will assign "bookmark.fill" */
     let coreDataFetchId = coreData.fetchFavouriteCocktails().filter{
       return $0.id == id
     }
@@ -118,8 +121,5 @@ extension DetailViewController {
     firstTableView.sizeToFit()
     firstTableView.register(DetailTableViewCell.self, forCellReuseIdentifier: "IdentifierDetail")
     firstTableView.tableFooterView = UIView()
-  }
-  
-  
-  
+  }  
 }

@@ -8,6 +8,7 @@
 import UIKit
 
 final class DetailViewController: UIViewController, UITableViewDelegate {
+  private let notificationCenter = NotificationCenter.default
   let coreData = CoreDataManager()
   let cocktailDataManager  = CocktailDataManager()
   let headerTitles = ["Ingredients", "Measure"]
@@ -44,20 +45,20 @@ final class DetailViewController: UIViewController, UITableViewDelegate {
     setupCocktailInstruction()
     setupFirstTableView()
     updateInterface()
-    
   }
   
   //MARK:  func -
   func updateInterface(){
     cocktailDataManager.downloadSearchByIdCocktails(id: id) {
       let data = self.coreData.fetchSearchByIdCocktail()
-      data.forEach { data in
-        guard let imageData = data.image else { return }
+      data.forEach { [weak self] data in
+        guard
+          let self = self,
+          let imageData = data.image else { return }
         self.cocktailImage.image = UIImage(data: imageData)
         self.cocktailName.text = data.name
         self.categoryLabel.text = data.strAlcoholic
         self.cocktailInstruction.text = data.strInstructions
-        
         self.appendElementsForIngredien(optionalIngredient: data.strIngredient1)
         self.appendElementsForIngredien(optionalIngredient: data.strIngredient2)
         self.appendElementsForIngredien(optionalIngredient: data.strIngredient3)
@@ -76,7 +77,6 @@ final class DetailViewController: UIViewController, UITableViewDelegate {
         
         let queue = DispatchQueue(label: "download_queue", qos: .utility)
         queue.async {
-          
           self.appendElementsForMeasure(optionalMeasure: data.strMeasure1)
           self.appendElementsForMeasure(optionalMeasure: data.strMeasure2)
           self.appendElementsForMeasure(optionalMeasure: data.strMeasure3)
@@ -120,8 +120,7 @@ final class DetailViewController: UIViewController, UITableViewDelegate {
   }
   
   //MARK:- buttomFunc
-  
-  @objc func click(sender: UIButton) {
+  @objc func saveButtonFunc(sender: UIButton) {
     print("save button tapped")
     if sender.currentImage == UIImage(systemName: "bookmark") {
       sender.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
@@ -131,18 +130,14 @@ final class DetailViewController: UIViewController, UITableViewDelegate {
       
     } else {
       sender.setImage(UIImage(systemName: "bookmark"), for: .normal)
-      coreData.deleteFavouriteCocktails()
+      coreData.deleteFavouriteCocktails(id: id)
       print("удаляем коктейль")
     }
+    notificationCenter.post(name: Notification.Name(rawValue: "reloadTableView"), object: nil)
   }
-  
   
   //MARK: deinit -
   deinit {
     print("deallocating \(self)")
   }
-  
-  
 }
-
-

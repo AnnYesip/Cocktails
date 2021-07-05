@@ -12,7 +12,7 @@ final class TableViewCell: UITableViewCell {
     return "Identifier2"
   }
   
-  //MARK: Initializer -
+  //MARK: init -
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     contentView.addSubview(cocktailImage)
@@ -55,5 +55,4 @@ final class TableViewCell: UITableViewCell {
     cocktailsLabel.numberOfLines = 0
     cocktailsLabel.font = UIFont.boldSystemFont(ofSize: 20)
   }
-  
 }

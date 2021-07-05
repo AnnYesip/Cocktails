@@ -41,7 +41,7 @@ struct NetworkManager {
     }
   }
   
-  func fetchDataById(id : String, completion: @escaping ([ Drink ]) -> Void){
+  func fetchDataById(id: String, completion: @escaping ([ Drink ]) -> Void) {
     let urlString = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=\(id)"
     guard let url = URL(string: urlString) else { return }
     let session = URLSession.shared

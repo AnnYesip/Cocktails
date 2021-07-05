@@ -305,13 +305,11 @@ class CoreDataManager {
     }
   }
   
-  func deleteFavouriteCocktails() {
+  func deleteFavouriteCocktails(id: String) {
     let fetchRequest: NSFetchRequest<FavouriteCocktails> = FavouriteCocktails.fetchRequest()
     do {
-      let cocktails = try mainMOC.fetch(fetchRequest)
-      for item in cocktails {
-        mainMOC.delete(item)
-      }
+      try mainMOC.fetch(fetchRequest)
+        .forEach { if $0.id == id { mainMOC.delete($0) } }
       try mainMOC.save()
     } catch let error as NSError {
       print(error)

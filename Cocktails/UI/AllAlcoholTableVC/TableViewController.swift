@@ -23,7 +23,7 @@ final class TableViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if tableView.tag == 1{
+    if tableView.tag == 1 {
       return coreDataManager.fetchCocktails().count
     } else if tableView.tag == 2 {
       return coreDataManager.fetchNonAlcoholicCocktails().count

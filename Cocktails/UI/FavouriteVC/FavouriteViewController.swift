@@ -13,7 +13,10 @@ final class FavouriteViewController: UIViewController {
   let tableView: UITableView = {
     let table = UITableView()
     table.translatesAutoresizingMaskIntoConstraints = false
-    table.register(FavouriteTableViewCell.self, forCellReuseIdentifier: FavouriteTableViewCell.reuseIdentifier)
+    table.register(
+      FavouriteTableViewCell.self,
+      forCellReuseIdentifier: FavouriteTableViewCell.reuseIdentifier
+    )
     return table
   }()
   
@@ -27,10 +30,16 @@ final class FavouriteViewController: UIViewController {
     view.addSubview(tableView)
     setupLabel()
     setupTableView()
+    addObservers()
   }
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(true)
-    tableView.reloadData()
+
+  private func addObservers() {
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(reloadTableView(_:)),
+      name: Notification.Name(rawValue: "reloadTableView"),
+      object: nil
+    )
   }
   
   private func setupLabel(){
@@ -48,5 +57,17 @@ final class FavouriteViewController: UIViewController {
       tableView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
       tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
     ])
+  }
+  
+  deinit {
+    print("Deallocating \(self)")
+  }
+}
+
+private extension FavouriteViewController {
+  //MARK:- reloadTableView
+  @objc func reloadTableView(_ notification: Notification){
+    print("!!! !!! !!!reloadTableView!!! !!! !!!")
+    tableView.reloadData()
   }
 }

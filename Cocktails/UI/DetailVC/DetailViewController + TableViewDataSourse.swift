@@ -24,16 +24,17 @@ extension DetailViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    if indexPath.section == 0{
+    if indexPath.section == 0 {
       tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: "IdentifierDetail")
       let cell = tableView.dequeueReusableCell(withIdentifier: "IdentifierDetail", for: indexPath)
-      guard ingredients.count >= indexPath.row else { return UITableViewCell() }
+      guard ingredients.count  - 1 >= indexPath.row else { return UITableViewCell() }
       cell.textLabel?.text = ingredients[indexPath.row]
       return cell
+      
     } else if indexPath.section == 1  {
       tableView.register(DetailTableViewCell2.self, forCellReuseIdentifier: "IdentifierDetail")
       let cell = tableView.dequeueReusableCell(withIdentifier: "IdentifierDetail", for: indexPath)
-      guard measure.count >= indexPath.row else { return UITableViewCell() }
+      guard measure.count - 1 >= indexPath.row else { return UITableViewCell() }
       cell.textLabel!.text = measure[indexPath.row]
       return cell
     }

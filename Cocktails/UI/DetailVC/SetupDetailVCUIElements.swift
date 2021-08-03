@@ -119,7 +119,6 @@ extension DetailViewController {
     firstTableView.rowHeight = UITableView.automaticDimension
     firstTableView.estimatedRowHeight = 140
     firstTableView.sizeToFit()
-    firstTableView.register(DetailTableViewCell.self, forCellReuseIdentifier: "IdentifierDetail")
     firstTableView.tableFooterView = UIView()
   }  
 }

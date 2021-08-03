@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailTableViewCell2: UITableViewCell {
+class DetailTableViewCellWithMeasure: UITableViewCell {
 
   class var reuseIdentifier: String {
       return "IdentifierDetail2"

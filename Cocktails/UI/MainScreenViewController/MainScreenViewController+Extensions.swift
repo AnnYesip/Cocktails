@@ -17,7 +17,7 @@ extension MainScreenViewController{
     tableVC.tableView.tag = 1
     tableVC.tableView.reloadData()
     navigationController?.pushViewController(tableVC, animated: true)
-    print("open first table view")
+    print("open alcoholic table view")
   }
   
   @objc func openNonAlcoholicTV() {
@@ -27,7 +27,7 @@ extension MainScreenViewController{
     tableVC.tableView.tag = 2
     tableVC.tableView.reloadData()
     navigationController?.pushViewController(tableVC, animated: true)
-    print("open second table view")
+    print("open non-alcoholic table view")
   }
   
   @objc func openDetailVC(_ sender: UITapGestureRecognizer? = nil) {

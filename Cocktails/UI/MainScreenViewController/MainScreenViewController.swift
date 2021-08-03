@@ -192,9 +192,9 @@ final class MainScreenViewController: UIViewController, UICollectionViewDelegate
   private func setupAlcoholicButton(){
     alcoholicButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      alcoholicButton.topAnchor.constraint(equalTo: recommendedView.bottomAnchor, constant: 30),
+      alcoholicButton.topAnchor.constraint(equalTo: buttonView.topAnchor, constant: 20),
       alcoholicButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-      alcoholicButton.heightAnchor.constraint(equalToConstant: 100),
+      alcoholicButton.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.15),
       alcoholicButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.9)
     ])
     alcoholicButton.layer.cornerRadius = 10
@@ -202,9 +202,6 @@ final class MainScreenViewController: UIViewController, UICollectionViewDelegate
     alcoholicButton.setTitleColor(.white, for: .normal)
     alcoholicButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
     alcoholicButton.addTarget(self, action: #selector(openAlcoholicTV), for: .touchUpInside)
-    alcoholicButton.layer.shadowOpacity = 0.3
-    alcoholicButton.layer.shadowRadius = 9.0
-    alcoholicButton.layer.shadowColor = UIColor.black.cgColor
   }
   
   private func setupNonAlcoholicButton(){
@@ -212,7 +209,7 @@ final class MainScreenViewController: UIViewController, UICollectionViewDelegate
     NSLayoutConstraint.activate([
       nonAlcoholicButton.topAnchor.constraint(equalTo: alcoholicButton.bottomAnchor, constant: 20),
       nonAlcoholicButton.trailingAnchor.constraint(equalTo: alcoholicButton.trailingAnchor),
-      nonAlcoholicButton.heightAnchor.constraint(equalToConstant: 100),
+      nonAlcoholicButton.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.15),
       nonAlcoholicButton.widthAnchor.constraint(equalTo: contentView.widthAnchor , multiplier: 0.9)
     ])
     nonAlcoholicButton.setTitle(" Non Alcoholic cocktails", for: UIControl.State.normal)
@@ -220,11 +217,6 @@ final class MainScreenViewController: UIViewController, UICollectionViewDelegate
     nonAlcoholicButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
     nonAlcoholicButton.layer.cornerRadius = 10
     nonAlcoholicButton.addTarget(self, action: #selector(openNonAlcoholicTV), for: .touchUpInside)
-    nonAlcoholicButton.layer.shadowOpacity = 0.3
-    nonAlcoholicButton.layer.shadowRadius = 9.0
-    nonAlcoholicButton.layer.shadowColor = UIColor.black.cgColor
-    nonAlcoholicButton.layer.shouldRasterize = true
-    nonAlcoholicButton.layer.rasterizationScale = UIScreen.main.scale
   }
   
   //MARK: deinit -

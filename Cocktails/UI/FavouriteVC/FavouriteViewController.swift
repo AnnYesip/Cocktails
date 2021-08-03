@@ -32,7 +32,7 @@ final class FavouriteViewController: UIViewController {
     setupTableView()
     addObservers()
   }
-
+  
   private func addObservers() {
     NotificationCenter.default.addObserver(
       self,
@@ -67,7 +67,6 @@ final class FavouriteViewController: UIViewController {
 private extension FavouriteViewController {
   //MARK:- reloadTableView
   @objc func reloadTableView(_ notification: Notification){
-    print("!!! !!! !!!reloadTableView!!! !!! !!!")
     tableView.reloadData()
   }
 }

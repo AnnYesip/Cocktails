@@ -131,7 +131,6 @@ final class DetailViewController: UIViewController, UITableViewDelegate {
     } else {
       sender.setImage(UIImage(systemName: "bookmark"), for: .normal)
       coreData.deleteFavouriteCocktails(id: id)
-      print("удаляем коктейль")
     }
     notificationCenter.post(name: Notification.Name(rawValue: "reloadTableView"), object: nil)
   }

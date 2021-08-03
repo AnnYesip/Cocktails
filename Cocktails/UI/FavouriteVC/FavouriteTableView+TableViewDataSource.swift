@@ -43,7 +43,6 @@ extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
     let secondVC = DetailViewController()
     tableView.cellForRow(at: indexPath)?.selectionStyle = .none
     guard let cocktailId = cocktail.id else { return }
-    print(cocktailId)
     secondVC.id = cocktailId
     tabBarController?.present(secondVC, animated: true)
   }

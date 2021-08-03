@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		871675F42653F8280051D12E /* AllCocktailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871675F32653F8280051D12E /* AllCocktailTableViewCell.swift */; };
-		871D7B862663D8D3004A066C /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D7B852663D8D3004A066C /* DetailTableViewCell.swift */; };
+		871D7B862663D8D3004A066C /* DetailTableViewCellWithIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D7B852663D8D3004A066C /* DetailTableViewCellWithIngredients.swift */; };
 		871D7B882663E102004A066C /* DetailViewController + TableViewDataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D7B872663E102004A066C /* DetailViewController + TableViewDataSourse.swift */; };
 		871D7B8A2663E14A004A066C /* SetupDetailVCUIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871D7B892663E14A004A066C /* SetupDetailVCUIElements.swift */; };
 		8730D69B26204F0800A026F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730D69A26204F0800A026F8 /* AppDelegate.swift */; };
@@ -36,7 +36,7 @@
 		87BCE78B26231E5E00E63365 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCE78A26231E5E00E63365 /* CoreDataManager.swift */; };
 		87CCD6FC2673EB4300F3C043 /* CocktailsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CCD6FB2673EB4300F3C043 /* CocktailsDTO.swift */; };
 		87CCD7042674C07D00F3C043 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CCD7032674C07D00F3C043 /* GradientButton.swift */; };
-		87CCD7062674C1F500F3C043 /* DetailTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CCD7052674C1F500F3C043 /* DetailTableViewCell2.swift */; };
+		87CCD7062674C1F500F3C043 /* DetailTableViewCellWithMeasure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CCD7052674C1F500F3C043 /* DetailTableViewCellWithMeasure.swift */; };
 		87CCD7082674DB4400F3C043 /* FavouriteTableView+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CCD7072674DB4400F3C043 /* FavouriteTableView+TableViewDataSource.swift */; };
 		87D89BF02655614E00E6667B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D89BEF2655614E00E6667B /* TableViewController.swift */; };
 		87D89BF2265561AE00E6667B /* AllAlcoholSecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D89BF1265561AE00E6667B /* AllAlcoholSecondTableViewCell.swift */; };
@@ -46,7 +46,7 @@
 
 /* Begin PBXFileReference section */
 		871675F32653F8280051D12E /* AllCocktailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCocktailTableViewCell.swift; sourceTree = "<group>"; };
-		871D7B852663D8D3004A066C /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		871D7B852663D8D3004A066C /* DetailTableViewCellWithIngredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCellWithIngredients.swift; sourceTree = "<group>"; };
 		871D7B872663E102004A066C /* DetailViewController + TableViewDataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewController + TableViewDataSourse.swift"; sourceTree = "<group>"; };
 		871D7B892663E14A004A066C /* SetupDetailVCUIElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupDetailVCUIElements.swift; sourceTree = "<group>"; };
 		8730D69726204F0800A026F8 /* Cocktails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cocktails.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,7 +76,7 @@
 		87BCE78A26231E5E00E63365 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		87CCD6FB2673EB4300F3C043 /* CocktailsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsDTO.swift; sourceTree = "<group>"; };
 		87CCD7032674C07D00F3C043 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
-		87CCD7052674C1F500F3C043 /* DetailTableViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell2.swift; sourceTree = "<group>"; };
+		87CCD7052674C1F500F3C043 /* DetailTableViewCellWithMeasure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCellWithMeasure.swift; sourceTree = "<group>"; };
 		87CCD7072674DB4400F3C043 /* FavouriteTableView+TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteTableView+TableViewDataSource.swift"; sourceTree = "<group>"; };
 		87D89BEF2655614E00E6667B /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		87D89BF1265561AE00E6667B /* AllAlcoholSecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAlcoholSecondTableViewCell.swift; sourceTree = "<group>"; };
@@ -300,8 +300,8 @@
 				87EA9EDC26627E0C00D7E090 /* DetailViewController.swift */,
 				871D7B892663E14A004A066C /* SetupDetailVCUIElements.swift */,
 				871D7B872663E102004A066C /* DetailViewController + TableViewDataSourse.swift */,
-				871D7B852663D8D3004A066C /* DetailTableViewCell.swift */,
-				87CCD7052674C1F500F3C043 /* DetailTableViewCell2.swift */,
+				871D7B852663D8D3004A066C /* DetailTableViewCellWithIngredients.swift */,
+				87CCD7052674C1F500F3C043 /* DetailTableViewCellWithMeasure.swift */,
 			);
 			path = DetailVC;
 			sourceTree = "<group>";
@@ -393,7 +393,7 @@
 				8790B7A92670F02300D66E14 /* FavouriteTableViewCell.swift in Sources */,
 				87CCD7082674DB4400F3C043 /* FavouriteTableView+TableViewDataSource.swift in Sources */,
 				87B821A426611CC100A55829 /* CocktailDataManager.swift in Sources */,
-				87CCD7062674C1F500F3C043 /* DetailTableViewCell2.swift in Sources */,
+				87CCD7062674C1F500F3C043 /* DetailTableViewCellWithMeasure.swift in Sources */,
 				871675F42653F8280051D12E /* AllCocktailTableViewCell.swift in Sources */,
 				87B821A0265D421200A55829 /* SearchTableViewController.swift in Sources */,
 				8733323126760CB7003FE3FB /* UITextView+Extensions.swift in Sources */,
@@ -415,7 +415,7 @@
 				8730D69D26204F0800A026F8 /* SceneDelegate.swift in Sources */,
 				871D7B882663E102004A066C /* DetailViewController + TableViewDataSourse.swift in Sources */,
 				87B351AA266F630B00F270CC /* MainScreenViewController+Extensions.swift in Sources */,
-				871D7B862663D8D3004A066C /* DetailTableViewCell.swift in Sources */,
+				871D7B862663D8D3004A066C /* DetailTableViewCellWithIngredients.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
